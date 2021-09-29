@@ -127,15 +127,13 @@ shape = SubResource( 1 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 11 )
 animation = "down"
-frame = 2
 playing = true
 
 [node name="BodyCommandant" type="AnimatedSprite" parent="."]
-visible = false
 scale = Vector2( 1.5, 1.54 )
 frames = SubResource( 21 )
 animation = "down"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
