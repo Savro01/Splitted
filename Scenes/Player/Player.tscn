@@ -124,7 +124,6 @@ position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 
 [node name="BodyElectricien" type="AnimatedSprite" parent="."]
-visible = false
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 11 )
 animation = "down"
@@ -132,8 +131,10 @@ frame = 2
 playing = true
 
 [node name="BodyCommandant" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 21 )
 animation = "down"
+playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
