@@ -22,10 +22,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("move_right"):
 		$BodyElectricien.flip_h = false
 		$BodyElectricien.animation = "right"
+		$BodyCommandant.flip_h = false
+		$BodyCommandant.animation = "right"
 	if Input.is_action_just_pressed("move_down"):
 		$BodyElectricien.animation = "down"
+		$BodyCommandant.animation = "down"
 	if Input.is_action_just_pressed("move_up"):
 		$BodyElectricien.animation = "up"
+		$BodyCommandant.animation = "up"
 	if Input.is_action_just_pressed("move_left"):
 		$BodyElectricien.animation = "right"
 		$BodyElectricien.flip_h = true
+		$BodyCommandant.animation = "right"
+		$BodyCommandant.flip_h = true

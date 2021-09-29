@@ -131,9 +131,11 @@ frame = 2
 playing = true
 
 [node name="BodyCommandant" type="AnimatedSprite" parent="."]
-scale = Vector2( 1.5, 1.5 )
+visible = false
+scale = Vector2( 1.5, 1.54 )
 frames = SubResource( 21 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
