@@ -4,25 +4,24 @@
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Map/Vaisseau.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Tileset/door_with_coll.tres" type="TileSet" id=4]
+[ext_resource path="res://Assets/Tileset/decoration.tres" type="TileSet" id=5]
 
-[sub_resource type="TileSet" id=7]
-
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 41.1456, 15.6616 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 15.8252, 40.1187 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 15.7067, 41.7701 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 39.7695, 15.6375 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 16.4258, 40.3005 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 16.0622, 40.1569 )
 
 [node name="Vaisseau" type="Node2D"]
@@ -91,9 +90,10 @@ format = 1
 tile_data = PoolIntArray( 327667, 0, 0 )
 
 [node name="TileMap Deco" type="TileMap" parent="."]
-tile_set = SubResource( 7 )
+tile_set = ExtResource( 5 )
 cell_size = Vector2( 32, 32 )
 format = 1
+tile_data = PoolIntArray( -1441803, 2, 196616, -1245194, 2, 196616, -1114099, 2, 196616, -983057, 2, 131075, -983049, 2, 131075, -983030, 2, 131075, -983022, 2, 131075, -589845, 2, 196616, -655351, 2, 196616, -655340, 2, 196616, -458772, -1610612734, 393231, 262138, 2, 196616, 655343, 2, 131075, 655351, 2, 131075, 589825, 2, 131075, 589831, 2, 196616, 589834, 2, 393231, 655366, 2, 196616, 655367, 2, 196616, 655369, 2, 131075, 655381, 2, 131075, 917519, 2, 196616, 1114097, 2, 196616, 1114098, 2, 196616 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 528.073, 294.843 )
@@ -104,7 +104,7 @@ position = Vector2( 528.073, 294.843 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Door1"]
 position = Vector2( 271.657, -79.2345 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Door2" type="Area2D" parent="Node2D"]
 
@@ -116,25 +116,25 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Door3"]
 position = Vector2( 143.793, 174.77 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Door4" type="Area2D" parent="Node2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Door4"]
 position = Vector2( -207.769, -80.8625 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Door5" type="Area2D" parent="Node2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Door5"]
 position = Vector2( -399.426, -336.199 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Door6" type="Area2D" parent="Node2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Door6"]
 position = Vector2( -400.062, 143.157 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [connection signal="body_entered" from="Node2D/Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_exited" from="Node2D/Door1" to="." method="_on_Door1_body_exited"]
