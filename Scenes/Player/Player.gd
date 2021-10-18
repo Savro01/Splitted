@@ -1,21 +1,23 @@
+class_name Player
 extends KinematicBody2D
 
 var speed = 100
-var velocity = Vector2.ZERO
+#var velocity = Vector2.ZERO
+
+
+var velocity: Vector2 = Vector2.ZERO
 
 func _physics_process(delta):
+	var new_velocity: Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
-		velocity.x = speed
-	elif Input.is_action_pressed("move_left"):
-		velocity.x = -speed
-	else:
-		velocity.x = 0
+		new_velocity.x += speed
+	if Input.is_action_pressed("move_left"):
+		new_velocity.x -= speed
 	if Input.is_action_pressed("move_up"):
-		velocity.y = -speed
-	elif Input.is_action_pressed("move_down"):
-		velocity.y = speed
-	else:
-		velocity.y = 0
+		new_velocity.y -= speed
+	if Input.is_action_pressed("move_down"):
+		new_velocity.y += speed
+	self.velocity = new_velocity
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 	move_and_slide(velocity)
