@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Assets/Menu/fonts/OCRAEXT.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Buttons/btn_hover.png" type="Texture" id=2]
@@ -8,11 +8,11 @@
 [ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Menu/fonts/OpenSans-Medium.ttf" type="DynamicFontData" id=7]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 100
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=8]
 size = 25
 font_data = ExtResource( 7 )
 
@@ -32,28 +32,31 @@ region_rect = Rect2( 0, 0, 612, 83 )
 size = 69
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 601, 83 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 602, 83 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 612, 83 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=12]
 size = 69
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 601, 83 )
 
-[sub_resource type="Animation" id=12]
-resource_name = "AnimationMenu"
+[sub_resource type="DynamicFont" id=14]
+size = 69
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=15]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("MenuContainer:rect_position:x")
 tracks/0/interp = 1
@@ -61,7 +64,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1.36365, -0.25, 0, 0.25, 0, -605, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1.36365, -0.25, 0, 0.25, 0, -600, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 tracks/1/type = "bezier"
@@ -75,23 +78,83 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("RejoindreContainer:rect_position:x")
+tracks/2/path = NodePath("RejoindreContainer:margin_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1950, -0.25, 0, 0.25, 0, 620, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 960, -0.25, 0, 0.25, 0, -252, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("RejoindreContainer:rect_position:y")
+tracks/3/path = NodePath("RejoindreContainer:margin_top")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 503.5, -0.25, 0, 0.25, 0, 490, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( -100, -0.25, 0, 0.25, 0, -100, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("RejoindreContainer:margin_right")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1464, -0.25, 0, 0.25, 0, 252, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("RejoindreContainer:margin_bottom")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 100, -0.25, 0, 0.25, 0, 100, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Attente:margin_left")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 960, -0.25, 0, 0.25, 0, -725, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Attente:margin_top")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( -50, -0.25, 0, 0.25, 0, -50, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Attente:margin_right")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 2220, -0.25, 0, 0.25, 0, 725, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Attente:margin_bottom")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 50, -0.25, 0, 0.25, 0, 50, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 
@@ -110,7 +173,11 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = 2.0
 texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -122,7 +189,7 @@ margin_left = -236.636
 margin_top = 33.6359
 margin_right = 243.364
 margin_bottom = 197.636
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
 text = "SPLITTED"
 align = 1
 valign = 1
@@ -135,7 +202,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -127.0
 margin_bottom = 70.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 8 )
 text = "ver 0.015"
 align = 1
 valign = 1
@@ -144,27 +211,28 @@ __meta__ = {
 }
 
 [node name="RejoindreContainer" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 990.0
-margin_top = -50.0
-margin_right = 1494.0
-margin_bottom = 134.0
+margin_left = 960.0
+margin_top = -100.0
+margin_right = 1464.0
+margin_bottom = 100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="IpField" type="LineEdit" parent="RejoindreContainer"]
 margin_right = 504.0
-margin_bottom = 90.0
+margin_bottom = 98.0
 size_flags_vertical = 3
 
 [node name="Button" type="Button" parent="RejoindreContainer"]
-margin_top = 94.0
+margin_top = 102.0
 margin_right = 504.0
-margin_bottom = 184.0
+margin_bottom = 200.0
 size_flags_vertical = 3
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
@@ -176,9 +244,9 @@ text = "Se connecter"
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 1.36365
-margin_top = -139.455
-margin_right = 602.364
-margin_bottom = 260.545
+margin_top = -99.9424
+margin_right = 416.364
+margin_bottom = 222.058
 custom_constants/separation = 10
 alignment = 1
 __meta__ = {
@@ -186,13 +254,13 @@ __meta__ = {
 }
 
 [node name="Rejoindre" type="Button" parent="MenuContainer"]
-margin_right = 601.0
-margin_bottom = 92.0
+margin_right = 415.0
+margin_bottom = 73.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Rejoindre"
 align = 2
 __meta__ = {
@@ -200,14 +268,14 @@ __meta__ = {
 }
 
 [node name="Heberger" type="Button" parent="MenuContainer"]
-margin_top = 102.0
-margin_right = 601.0
-margin_bottom = 195.0
+margin_top = 83.0
+margin_right = 415.0
+margin_bottom = 156.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Heberger"
 align = 2
 __meta__ = {
@@ -215,14 +283,14 @@ __meta__ = {
 }
 
 [node name="Options" type="Button" parent="MenuContainer"]
-margin_top = 205.0
-margin_right = 601.0
-margin_bottom = 297.0
+margin_top = 166.0
+margin_right = 415.0
+margin_bottom = 239.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Options"
 align = 2
 __meta__ = {
@@ -230,22 +298,42 @@ __meta__ = {
 }
 
 [node name="Quitter" type="Button" parent="MenuContainer"]
-margin_top = 307.0
-margin_right = 601.0
-margin_bottom = 400.0
+margin_top = 249.0
+margin_right = 415.0
+margin_bottom = 322.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Quitter"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Attente" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 960.0
+margin_top = -50.0
+margin_right = 2220.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 14 )
+text = "En attente de l'éléctricien..."
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationMenu" type="AnimationPlayer" parent="."]
-anims/AnimationMenu = SubResource( 12 )
+anims/AnimationMenu = SubResource( 15 )
 
 [connection signal="pressed" from="MenuContainer/Rejoindre" to="." method="_on_Rejoindre_pressed"]
+[connection signal="pressed" from="MenuContainer/Heberger" to="." method="_on_Heberger_pressed"]
 [connection signal="pressed" from="MenuContainer/Quitter" to="." method="_on_Quitter_pressed"]
