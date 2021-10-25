@@ -1,4 +1,6 @@
+class_name Player
 extends KinematicBody2D
+
 
 var speed = 100
 var velocity = Vector2.ZERO
