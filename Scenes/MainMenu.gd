@@ -14,7 +14,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+	
+
+func _on_Rejoindre_pressed():
+	$RejoindreContainer.show()
+	$AnimationMenu.play("AnimationMenu")
+	
 
 
-func _on_Button4_pressed():
+func _on_Quitter_pressed():
 	get_tree().quit()
