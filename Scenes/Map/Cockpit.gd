@@ -4,12 +4,13 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var currentArea = null
+var currentArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player/BodyCommandant.visible = true
 	$Player/BodyElectricien.visible = false
+	currentArea = null
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,9 +25,31 @@ func _process(delta):
 				if $Popup.visible:
 					$Popup.hide()
 					$Player.speed = 100
+		"ZoneLivre":
+			print("Livre")
 
+# Body Entered
 
 func _on_ZonePilotage_body_entered(body):
-	var v = $Player.get_position()
-	$Popup.set_position(v)
-	currentArea = "ZonePilotage"
+	if(body is Player):
+		var v = $Player.get_position()
+		$Popup.set_position(v)
+		currentArea = "ZonePilotage"
+
+func _on_ZoneLivre_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneLivre"
+
+
+# Body Exited
+
+func _on_ZonePilotage_body_exited(body):
+	if(body is Player):
+		currentArea = null
+		print("sortie pilotage")
+	
+func _on_ZoneLivre_body_exited(body):
+	if(body is Player):
+		currentArea = null
+		print("sortie livre")
+	

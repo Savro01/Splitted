@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Tileset/chests.tres" type="TileSet" id=2]
@@ -8,10 +8,22 @@
 [ext_resource path="res://Scenes/Map/Cockpit.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.434, 31.1747 )
+extents = Vector2( 31.0239, 16.3694 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 15.4086, 32.777 )
+extents = Vector2( 16.815, 32.1986 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 15.3577, 31.5324 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16.6938, 17.286 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16.0308, 14.8132 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 15.2252, 31.4805 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )
@@ -54,7 +66,7 @@ format = 1
 tile_data = PoolIntArray( 327701, 2, 196613, 1310722, 2, 131087, 1310757, 2, 327682, 1507346, 1610612738, 262146, 1572883, 2, 393225, 2031619, -1073741822, 327684, 2424835, -1073741822, 196614, 2424868, -1610612734, 196614 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 640.723, 328.371 )
+position = Vector2( 641.12, 328.173 )
 
 [node name="Popup" type="Popup" parent="."]
 anchor_left = 0.5
@@ -85,21 +97,40 @@ __meta__ = {
 [node name="ZonePilotage" type="Area2D" parent="."]
 
 [node name="CollisionPilotage" type="CollisionShape2D" parent="ZonePilotage"]
-position = Vector2( 639.233, 271.412 )
+position = Vector2( 639.863, 271.571 )
 shape = SubResource( 1 )
 
 [node name="ZoneLivre" type="Area2D" parent="."]
 
 [node name="CollisionLivre" type="CollisionShape2D" parent="ZoneLivre"]
-position = Vector2( 623.566, 798.893 )
+position = Vector2( 623.604, 800.056 )
 shape = SubResource( 2 )
 
 [node name="ZoneCarnet" type="Area2D" parent="."]
 
 [node name="CollisionCarnet" type="CollisionShape2D" parent="ZoneCarnet"]
-position = Vector2( 591.471, 734.074 )
-shape = SubResource( 1 )
+position = Vector2( 591.83, 735.794 )
+shape = SubResource( 3 )
+
+[node name="ZoneMoteur2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneMoteur2"]
+position = Vector2( 1167.24, 784.34 )
+shape = SubResource( 4 )
+
+[node name="ZoneMoteur1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneMoteur1"]
+position = Vector2( 112.91, 783.693 )
+shape = SubResource( 5 )
+
+[node name="ZoneBoutton" type="Area2D" parent="."]
+
+[node name="CollisionBoutton" type="CollisionShape2D" parent="ZoneBoutton"]
+position = Vector2( 79.2078, 671.376 )
+shape = SubResource( 6 )
 
 [connection signal="body_entered" from="ZonePilotage" to="." method="_on_ZonePilotage_body_entered"]
-[connection signal="body_entered" from="ZoneLivre" to="." method="_on_ZonePilotage_body_entered"]
-[connection signal="body_entered" from="ZoneCarnet" to="." method="_on_ZonePilotage_body_entered"]
+[connection signal="body_exited" from="ZonePilotage" to="." method="_on_ZonePilotage_body_exited"]
+[connection signal="body_entered" from="ZoneLivre" to="." method="_on_ZoneLivre_body_entered"]
+[connection signal="body_exited" from="ZoneLivre" to="." method="_on_ZoneLivre_body_exited"]
