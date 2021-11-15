@@ -30,7 +30,6 @@ func _on_Quitter_pressed():
 
 func _on_Connexion_pressed():
 	start_game(false)
-	
 
 func start_game(as_server):
 	Network.start(as_server)
@@ -44,7 +43,7 @@ func start_game(as_server):
 		if id == 1:
 			get_node("Player/BodyElectricien").visible = false
 			get_node("Cockpit").add_child(player)
-		else:
+		else:                   
 			get_node("Player/BodyCommandant").visible = false
 			get_node("Vaisseau").add_child(player)
 			
