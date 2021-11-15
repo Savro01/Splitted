@@ -13,14 +13,33 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if $RejoindreContainer.visible and Input.is_action_pressed("ui_cancel"):
+		$AnimationMenu.play_backwards("AnimationMenu")
+		var t = Timer.new()
+		t.set_wait_time(1)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")
+		$RejoindreContainer.hide()
+		
+	if $Attente.visible and Input.is_action_pressed("ui_cancel"):
+		$AnimationMenu.play_backwards("AnimationMenu")
+		var t = Timer.new()
+		t.set_wait_time(1)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")
+		$Attente.hide()
 	
 
 func _on_Rejoindre_pressed():
 	$RejoindreContainer.show()
 	$AnimationMenu.play("AnimationMenu")
 	Network.start(false)
+	
+		
+		
 
 func _on_Heberger_pressed():
 	$Attente.show()
