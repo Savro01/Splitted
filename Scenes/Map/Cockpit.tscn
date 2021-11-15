@@ -25,7 +25,7 @@ extents = Vector2( 16.0308, 14.8132 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 15.2252, 31.4805 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Cockpit" type="Node2D"]
 script = ExtResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]

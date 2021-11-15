@@ -229,7 +229,7 @@ margin_right = 504.0
 margin_bottom = 98.0
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="RejoindreContainer"]
+[node name="Connexion" type="Button" parent="RejoindreContainer"]
 margin_top = 102.0
 margin_right = 504.0
 margin_bottom = 200.0
@@ -334,6 +334,7 @@ __meta__ = {
 [node name="AnimationMenu" type="AnimationPlayer" parent="."]
 anims/AnimationMenu = SubResource( 13 )
 
+[connection signal="pressed" from="RejoindreContainer/Connexion" to="." method="_on_Connexion_pressed"]
 [connection signal="pressed" from="MenuContainer/Rejoindre" to="." method="_on_Rejoindre_pressed"]
 [connection signal="pressed" from="MenuContainer/Heberger" to="." method="_on_Heberger_pressed"]
 [connection signal="pressed" from="MenuContainer/Quitter" to="." method="_on_Quitter_pressed"]

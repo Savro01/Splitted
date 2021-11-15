@@ -15,17 +15,36 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-	
 
 func _on_Rejoindre_pressed():
 	$RejoindreContainer.show()
 	$AnimationMenu.play("AnimationMenu")
-	Network.start(false)
 
 func _on_Heberger_pressed():
 	$Attente.show()
 	$AnimationMenu.play("AnimationMenu")
-	Network.start(true)
+	start_game(true)
 
 func _on_Quitter_pressed():
 	get_tree().quit()
+
+func _on_Connexion_pressed():
+	start_game(false)
+	
+
+func start_game(as_server):
+	Network.start(as_server)
+	
+	yield(Network, "game_ready")
+	
+	var players_ids = Network.map_id_with_player.keys()
+	players_ids.sort()
+	for id in players_ids:
+		var player = Network.map_id_with_player[id]
+		if id == 1:
+			get_node("Player/BodyElectricien").visible = false
+			get_node("Cockpit").add_child(player)
+		else:
+			get_node("Player/BodyCommandant").visible = false
+			get_node("Vaisseau").add_child(player)
+			
