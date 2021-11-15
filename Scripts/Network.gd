@@ -17,7 +17,7 @@ func start(as_server = false):
 	get_tree().connect("connected_to_server", self, "_on_connected_to_server")
 	get_tree().connect("connection_failed", self, "_on_connection_failed")
 	get_tree().connect("network_peer_connected", self, "_on_network_peer_connected")
-	get_tree().connect("server_disconnect", self, "_on_server_disconnect")
+	get_tree().connect("server_disconnected", self, "_on_server_disconnected")
 
 func _on_connected_to_server():
 	print("connected to server")
@@ -26,8 +26,8 @@ func _on_connection_failed():
 	print("Connexion failed")
 
 func _on_network_peer_connected(id):
-	print("peer connected" + id)
+	print("peer connected " + str(id))
 
-func _on_server_disconnect():
-	print("server disconnect")
+func _on_server_disconnected():
+	print("server disconnected ")
 	get_tree().network_peer = null

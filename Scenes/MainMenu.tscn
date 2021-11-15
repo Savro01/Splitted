@@ -8,11 +8,11 @@
 [ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Menu/fonts/OpenSans-Medium.ttf" type="DynamicFontData" id=7]
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=2]
 size = 25
 font_data = ExtResource( 7 )
 
@@ -32,31 +32,31 @@ region_rect = Rect2( 0, 0, 612, 83 )
 size = 69
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 601, 83 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 602, 83 )
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 612, 83 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 69
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 601, 83 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 69
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=13]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 601, 83 )
-
-[sub_resource type="DynamicFont" id=14]
-size = 69
-font_data = ExtResource( 1 )
-
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=13]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("MenuContainer:rect_position:x")
 tracks/0/interp = 1
@@ -189,7 +189,7 @@ margin_left = -236.636
 margin_top = 33.6359
 margin_right = 243.364
 margin_bottom = 197.636
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 1 )
 text = "SPLITTED"
 align = 1
 valign = 1
@@ -202,7 +202,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -127.0
 margin_bottom = 70.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 2 )
 text = "ver 0.015"
 align = 1
 valign = 1
@@ -257,10 +257,10 @@ __meta__ = {
 margin_right = 415.0
 margin_bottom = 73.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 12 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Rejoindre"
 align = 2
 __meta__ = {
@@ -272,10 +272,10 @@ margin_top = 83.0
 margin_right = 415.0
 margin_bottom = 156.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 12 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Heberger"
 align = 2
 __meta__ = {
@@ -287,10 +287,10 @@ margin_top = 166.0
 margin_right = 415.0
 margin_bottom = 239.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 12 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Options"
 align = 2
 __meta__ = {
@@ -302,10 +302,10 @@ margin_top = 249.0
 margin_right = 415.0
 margin_bottom = 322.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 12 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Quitter"
 align = 2
 __meta__ = {
@@ -322,7 +322,7 @@ margin_left = 960.0
 margin_top = -50.0
 margin_right = 2220.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 12 )
 text = "En attente de l'éléctricien..."
 align = 1
 valign = 1
@@ -332,7 +332,7 @@ __meta__ = {
 }
 
 [node name="AnimationMenu" type="AnimationPlayer" parent="."]
-anims/AnimationMenu = SubResource( 15 )
+anims/AnimationMenu = SubResource( 13 )
 
 [connection signal="pressed" from="MenuContainer/Rejoindre" to="." method="_on_Rejoindre_pressed"]
 [connection signal="pressed" from="MenuContainer/Heberger" to="." method="_on_Heberger_pressed"]
