@@ -47,6 +47,7 @@ func _on_ZonePilotage_body_exited(body):
 	if(body is Player):
 		currentArea = null
 		print("sortie pilotage")
+		R.test_com = "Print electricien"
 	
 func _on_ZoneLivre_body_exited(body):
 	if(body is Player):
