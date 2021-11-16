@@ -1,6 +1,7 @@
 extends Node
 
 var is_server
+var IPClient = "localhost"
 
 var map_id_with_player = {}
 var player_pack = preload("res://Scenes/Player/Player.tscn")
@@ -18,7 +19,7 @@ func start(as_server = false):
 		peer.create_server(8000, 1)
 		create_player(1)
 	else:
-		peer.create_client("localhost", 8000) #Changer localhost par IP
+		peer.create_client(IPClient, 8000) #Changer localhost par IP
 	
 	get_tree().network_peer = peer
 	get_tree().connect("connected_to_server", self, "_on_connected_to_server")

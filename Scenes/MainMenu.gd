@@ -36,10 +36,6 @@ func _process(delta):
 func _on_Rejoindre_pressed():
 	$RejoindreContainer.show()
 	$AnimationMenu.play("AnimationMenu")
-	Network.start(false)
-	
-		
-		
 
 func _on_Heberger_pressed():
 	$Attente.show()
@@ -50,6 +46,8 @@ func _on_Quitter_pressed():
 	get_tree().quit()
 
 func _on_Connexion_pressed():
+	if($RejoindreContainer/IpField != null):
+		Network.IPClient = $RejoindreContainer/IpField.text
 	start_game(false)
 
 func start_game(as_server):
@@ -62,9 +60,7 @@ func start_game(as_server):
 	for id in players_ids:
 		var player = Network.map_id_with_player[id]
 		if id == 1:
-			get_node("Player/BodyElectricien").visible = false
-			get_node("Cockpit").add_child(player)
+			get_tree().change_scene("res://Scenes/Map/Vaisseau.tscn")
 		else:                   
-			get_node("Player/BodyCommandant").visible = false
-			get_node("Vaisseau").add_child(player)
+			get_tree().change_scene("res://Scenes/Map/Cockpit.tscn")
 			
