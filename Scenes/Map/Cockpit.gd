@@ -12,7 +12,6 @@ func _ready():
 	$Player/BodyElectricien.visible = false
 	currentArea = null
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	match currentArea:

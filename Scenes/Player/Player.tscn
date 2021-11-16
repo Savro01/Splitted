@@ -124,13 +124,14 @@ script = ExtResource( 2 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
 animation = "down"
-frame = 1
+frame = 2
 playing = true
 
 [node name="BodyCommandant" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 20 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
