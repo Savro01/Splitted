@@ -4,8 +4,7 @@ extends KinematicBody2D
 
 var speed = 100
 var velocity = Vector2.ZERO
-var os = OS.get_name()
-var isAndroid = os == "Android"
+var isAndroid = OS.get_name() == "Android"
 
 func _ready():
 	for c in $Joystick.get_children():
