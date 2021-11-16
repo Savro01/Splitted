@@ -53,26 +53,38 @@ func _physics_process(delta):
 
 
 func _on_Joystick_use_move_vector(move_vector):
-	move_and_slide(move_vector * 128)
-
+	move_and_slide(move_vector * 64)
 	####     LEFT 
-	if move_vector.x < 0 and move_vector.x < move_vector.y:
+	if move_vector.x < -0.75 and move_vector.y > -0.75:
 		$BodyCommandant.flip_h = true
 		$BodyCommandant.playing = true
-		$BodyCommandant.animation = "right"
+		$BodyCommandant.animation = "right"		
+		$BodyElectricien.flip_h = true
+		$BodyElectricien.playing = true
+		$BodyElectricien.animation = "right"
 	####     RIGHT 
-	elif move_vector.x > 0 and move_vector.x > move_vector.y:
+	elif move_vector.x > 0.75 and move_vector.x > move_vector.y:
 		$BodyCommandant.flip_h = false
 		$BodyCommandant.playing = true
-		$BodyCommandant.animation = "right"
+		$BodyCommandant.animation = "right"		
+		$BodyElectricien.flip_h = false
+		$BodyElectricien.playing = true
+		$BodyElectricien.animation = "right"
 	####     UP 
 	elif move_vector.y < 0 :
 		$BodyCommandant.playing = true
-		$BodyCommandant.animation = "up"
+		$BodyCommandant.animation = "up"		
+		$BodyElectricien.playing = true
+		$BodyElectricien.animation = "up"
 	####     DOWN 
-	elif move_vector.y > 0:
+	elif move_vector.y > 0 and move_vector.x > -0.75:
 		$BodyCommandant.playing = true
-		$BodyCommandant.animation = "down"
+		$BodyCommandant.animation = "down"		
+		$BodyElectricien.playing = true
+		$BodyElectricien.animation = "down"
 	else:
 		$BodyCommandant.playing = false
+		$BodyElectricien.playing = false
+		$BodyCommandant.set_frame(1)
+		$BodyElectricien.set_frame(1)
 			

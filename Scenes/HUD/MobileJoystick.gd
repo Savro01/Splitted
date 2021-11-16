@@ -14,17 +14,20 @@ func _input(event):
 			joystick_active = true
 			$Innercircle.position = event.position
 			$Innercircle.visible = true
-			
+		
 			
 	if event is InputEventScreenTouch:
 		if event.pressed == false:
 			joystick_active = false
 			$Innercircle.visible = false
+
 				
 
 func _physics_process(delta):
 	if joystick_active:
 		emit_signal("use_move_vector", move_vector)
+	else:
+		emit_signal("use_move_vector", Vector2())
 	
 
 
