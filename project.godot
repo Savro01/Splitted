@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Splitted"
-run/main_scene="res://Scenes/Map/Vaisseau.tscn"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
