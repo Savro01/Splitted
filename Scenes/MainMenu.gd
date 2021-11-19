@@ -48,19 +48,18 @@ func _on_Quitter_pressed():
 func _on_Connexion_pressed():
 	if($RejoindreContainer/IpField != null):
 		Network.IPClient = $RejoindreContainer/IpField.text
-	start_game(false)
+		start_game(false)
 
 func start_game(as_server):
+	pass
 	Network.start(as_server)
-	
+
 	yield(Network, "game_ready")
-	
+
 	var players_ids = Network.map_id_with_player.keys()
-	players_ids.sort()
-	for id in players_ids:
-		var player = Network.map_id_with_player[id]
-		if id == 1:
-			get_tree().change_scene("res://Scenes/Map/Vaisseau.tscn")
-		else:                   
-			get_tree().change_scene("res://Scenes/Map/Cockpit.tscn")
-			
+	if(get_tree().is_network_server()):
+		print("Create Serveur scene")
+		get_tree().change_scene("res://Scenes/Map/Cockpit.tscn")
+	else: 
+		print("Create Client scene")                  
+		get_tree().change_scene("res://Scenes/Map/Vaisseau.tscn")

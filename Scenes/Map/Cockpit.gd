@@ -46,8 +46,10 @@ func _on_ZonePilotage_body_exited(body):
 	if(body is Player):
 		currentArea = null
 		print("sortie pilotage")
-		R.test_com = "Print electricien"
-	
+		rset(R.test_com, "Print electricien")
+		print(R.test_com)
+
+
 func _on_ZoneLivre_body_exited(body):
 	if(body is Player):
 		currentArea = null

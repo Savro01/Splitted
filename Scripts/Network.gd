@@ -11,16 +11,19 @@ var players_ready_count = 0
 
 signal game_ready
 
-func start(as_server = false):
+func start(as_server):
 	is_server = as_server
+	print(is_server)
 	var peer = NetworkedMultiplayerENet.new()
-	
+
 	if is_server:
-		peer.create_server(8000, 1)
+		print("Creation serveur + player 1")
+		peer.create_server(8000, MAX_PLAYER_COUNT)
 		create_player(1)
 	else:
+		print("Création client)")
 		peer.create_client(IPClient, 8000) #Changer localhost par IP
-	
+
 	get_tree().network_peer = peer
 	get_tree().connect("connected_to_server", self, "_on_connected_to_server")
 	get_tree().connect("connection_failed", self, "_on_connection_failed")
@@ -30,7 +33,6 @@ func start(as_server = false):
 func create_player(id):
 	var player = player_pack.instance()
 	player.name = str(id)
-	print(id)
 	player.set_network_master(id)
 	map_id_with_player[id] = player
 	if get_tree().network_peer:

@@ -20,7 +20,7 @@ func _process(delta):
 func _on_Door1_body_entered(body):
 		if(body is Player):
 			print("Test_com")
-			#print(R.test_com)
+			print(R.test_com)
 			$Door1.tile_set = load("res://Assets/Tileset/door_without_coll.tres")
 			$Door1.visible = false
 
