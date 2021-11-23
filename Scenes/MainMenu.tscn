@@ -45,7 +45,7 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 612, 83 )
 
 [sub_resource type="DynamicFont" id=10]
-size = 69
+size = 39
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=11]
@@ -53,7 +53,7 @@ texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 601, 83 )
 
 [sub_resource type="DynamicFont" id=12]
-size = 69
+size = 29
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=13]
@@ -243,10 +243,10 @@ text = "Se connecter"
 [node name="MenuContainer" type="VBoxContainer" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 1.36365
-margin_top = -99.9424
-margin_right = 416.364
-margin_bottom = 222.058
+margin_left = 1.0
+margin_top = -16.0
+margin_right = 291.0
+margin_bottom = 209.0
 custom_constants/separation = 10
 alignment = 1
 __meta__ = {
@@ -254,8 +254,8 @@ __meta__ = {
 }
 
 [node name="Rejoindre" type="Button" parent="MenuContainer"]
-margin_right = 415.0
-margin_bottom = 73.0
+margin_right = 290.0
+margin_bottom = 48.0
 size_flags_vertical = 3
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
@@ -268,9 +268,9 @@ __meta__ = {
 }
 
 [node name="Heberger" type="Button" parent="MenuContainer"]
-margin_top = 83.0
-margin_right = 415.0
-margin_bottom = 156.0
+margin_top = 58.0
+margin_right = 290.0
+margin_bottom = 107.0
 size_flags_vertical = 3
 custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 8 )
@@ -283,9 +283,9 @@ __meta__ = {
 }
 
 [node name="Options" type="Button" parent="MenuContainer"]
-margin_top = 166.0
-margin_right = 415.0
-margin_bottom = 239.0
+margin_top = 117.0
+margin_right = 290.0
+margin_bottom = 166.0
 size_flags_vertical = 3
 custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 8 )
@@ -298,9 +298,9 @@ __meta__ = {
 }
 
 [node name="Quitter" type="Button" parent="MenuContainer"]
-margin_top = 249.0
-margin_right = 415.0
-margin_bottom = 322.0
+margin_top = 176.0
+margin_right = 290.0
+margin_bottom = 225.0
 size_flags_vertical = 3
 custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 8 )
@@ -318,10 +318,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 960.0
-margin_top = -50.0
-margin_right = 2220.0
-margin_bottom = 50.0
+margin_left = 1315.0
+margin_top = -19.0
+margin_right = 1864.0
+margin_bottom = 18.0
 custom_fonts/font = SubResource( 12 )
 text = "En attente de l'éléctricien..."
 align = 1

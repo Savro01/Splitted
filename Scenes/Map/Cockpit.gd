@@ -17,7 +17,10 @@ func _process(delta):
 	match currentArea:
 		"ZonePilotage":
 			if Input.is_action_pressed("object_interact"):
+				print("interaction click")
 				if $Popup.visible == false:
+					var v = $Player.get_position()
+					$Popup.set_position(v)
 					$Popup.show()
 					$Player.speed = 0
 			if Input.is_action_pressed("ui_cancel"):
@@ -31,8 +34,6 @@ func _process(delta):
 
 func _on_ZonePilotage_body_entered(body):
 	if(body is Player):
-		var v = $Player.get_position()
-		$Popup.set_position(v)
 		currentArea = "ZonePilotage"
 
 func _on_ZoneLivre_body_entered(body):

@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 signal use_move_vector
+signal use_A_btn
 
 var move_vector = Vector2(0,0)
 var joystick_active = false
@@ -14,12 +15,27 @@ func _input(event):
 			joystick_active = true
 			$Innercircle.position = event.position
 			$Innercircle.visible = true
-		
+			
+		if $A_Button.is_pressed():
+			print("A pressed")
+			var a = InputEventAction.new()
+			a.action = "object_interact"
+			a.pressed = true
+			Input.parse_input_event(a)
+
+			
+		if $B_Button.is_pressed():
+			var b = InputEventAction.new()
+			b.action = "ui_cancel"
+			b.pressed = true
+			Input.parse_input_event(b)
+
 			
 	if event is InputEventScreenTouch:
 		if event.pressed == false:
 			joystick_active = false
 			$Innercircle.visible = false
+			
 
 				
 
