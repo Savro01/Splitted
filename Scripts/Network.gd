@@ -43,7 +43,7 @@ remotesync func new_player_add(player_count):
 		players_ready_count += 1
 	if players_ready_count == MAX_PLAYER_COUNT:
 		rpc("emit_game_ready")
-
+		
 remotesync func emit_game_ready():
 	emit_signal("game_ready")
 

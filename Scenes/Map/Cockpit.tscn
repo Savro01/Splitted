@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Tileset/chests.tres" type="TileSet" id=2]
 [ext_resource path="res://Assets/Tileset/icons.tres" type="TileSet" id=3]
 [ext_resource path="res://Assets/Tileset/decoration.tres" type="TileSet" id=4]
+[ext_resource path="res://Scenes/DragElements/FileDrag.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Map/Cockpit.gd" type="Script" id=7]
 
@@ -68,32 +69,7 @@ tile_data = PoolIntArray( 327701, 2, 196613, 1310722, 2, 131087, 1310757, 2, 327
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 641.12, 328.173 )
 
-[node name="Popup" type="Popup" parent="."]
-visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="Popup"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -339.5
-margin_top = -198.0
-margin_right = 339.5
-margin_bottom = 198.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Popup" parent="." instance=ExtResource( 5 )]
 
 [node name="ZonePilotage" type="Area2D" parent="."]
 

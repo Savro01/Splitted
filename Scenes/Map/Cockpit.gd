@@ -17,7 +17,6 @@ func _process(delta):
 	match currentArea:
 		"ZonePilotage":
 			if Input.is_action_pressed("object_interact"):
-				print("interaction click")
 				if $Popup.visible == false:
 					var v = $Player.get_position()
 					$Popup.set_position(v)

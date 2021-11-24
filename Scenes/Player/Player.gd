@@ -10,6 +10,8 @@ func _ready():
 	for c in $Joystick.get_children():
 			c.visible = true
 		
+master func printdata(puppettext):
+	print(puppettext)
 
 func _physics_process(delta):
 	if(isAndroid):
@@ -59,7 +61,7 @@ func _physics_process(delta):
 
 func _on_Joystick_use_move_vector(move_vector):
 	if(!isAndroid):
-		move_and_slide(move_vector * 85)
+		move_and_slide(move_vector * speed)
 		####     LEFT 
 		if move_vector.x < -0.75 and move_vector.y > -0.75:
 			$BodyCommandant.flip_h = true

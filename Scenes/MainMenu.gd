@@ -55,7 +55,6 @@ func start_game(as_server):
 	Network.start(as_server)
 
 	yield(Network, "game_ready")
-
 	var players_ids = Network.map_id_with_player.keys()
 	if(get_tree().is_network_server()):
 		print("Create Serveur scene")
