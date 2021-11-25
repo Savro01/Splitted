@@ -1,13 +1,19 @@
 extends Node2D
 
-var colors = ["FD0100", "F76915", "EEDE04", "A0D636", "#f79cee", "333ED4"]
+var colors = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
 
 var folders # dossiers dests
 var main_pos # dossier source
 var dest_pos # dossier dest
 var bin # poubelle
+
+var code = []
 	
 var filled_folders = []
+
+# ordre a respecter : 
+# rouge - orange - jaune - vert - rose - bleu
+var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
 	
 ################################# Logic functions ######################
  
@@ -19,6 +25,7 @@ func isOnFolder(file, folder):
 		folder.setEmpty(false)
 
 func _ready():
+	$msg.hide()
 	## poubelle
 	$bin.setEmpty(true)
 	$bin.setToBin()
@@ -39,21 +46,38 @@ func _ready():
 		
 		
 func _physics_process(delta):
-	# on modifie la position du fichier en fonction des dossiers vides
-	# et de la position de la souris
-	if $file.selected:
+	if folders.size() <= 1:
 		$mainFolder.setEmpty(true)
-		# rend visible le fichier quand on le selectionne
-		$file.z_index = 1
-		$file.transform.origin = lerp($file.transform.origin, get_local_mouse_position(), 25 * delta)
+		$file.hide()
+		var correct = true
+		for i in range(0, filled_folders.size()):
+			if filled_folders[i] != order[i]:
+				correct = false
+				
+		if not correct:
+			$msg.show()
+		else:
+			$msg.text = "TRANSFERT SUCCEED"
+			$msg.show()
 	else:
-		$mainFolder.setEmpty(false)
-		# near_folder calcule le dossier le plus proche 
-		near_folder()
-		$file.transform.origin = lerp($file.transform.origin, dest_pos, 10 * delta)
-		# cache le fichier derriere les dossiers
-		$file.z_index = -1
+		# on modifie la position du fichier en fonction des dossiers vides
+		# et de la position de la souris
+		if $file.selected:
+			$mainFolder.setEmpty(true)
+			# rend visible le fichier quand on le selectionne
+			$file.z_index = 1
+			$file.transform.origin = lerp($file.transform.origin, get_local_mouse_position(), 25 * delta)
+		else:
+			$mainFolder.setEmpty(false)
+			# near_folder calcule le dossier le plus proche 
+			near_folder()
+			$file.transform.origin = lerp($file.transform.origin, dest_pos, 10 * delta)
+			# cache le fichier derriere les dossiers
+			$file.z_index = -1
+			
 
+		
+		
 func moveFileToPos(pos):
 	dest_pos = pos
 
@@ -79,5 +103,6 @@ func near_folder():
 				
 				# si le dossier est la poubelle, il est réutilisable
 				if not selectedFolder.is_in_group("bin"):
-					filled_folders.append(selectedFolder.color.to_html())
+					filled_folders.append(selectedFolder.color.to_html(false))
+					print(folders)
 					folders.erase(selectedFolder) 		# on supprime le dossier de la liste -> non draggable

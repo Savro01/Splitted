@@ -51,3 +51,14 @@ position = Vector2( 347.221, 113.35 )
 "dest",
 ] instance=ExtResource( 1 )]
 position = Vector2( 131.974, 174 )
+
+[node name="msg" type="Label" parent="."]
+margin_left = -65.4065
+margin_top = -114.164
+margin_right = 53.5935
+margin_bottom = -100.164
+rect_scale = Vector2( 4, 4 )
+text = "TRANSFERT FAILED"
+__meta__ = {
+"_edit_use_anchors_": false
+}
