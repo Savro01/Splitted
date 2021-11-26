@@ -1,6 +1,6 @@
 extends Node
 
-var test_com = "Test de base"
+remotesync var test_com = "Test de base"
 
 var click = false;
 # Declare member variables here. Examples:
@@ -12,6 +12,8 @@ var click = false;
 func _ready():
 	pass # Replace with function body.
 	
+remote func change_test_com():
+	test_com = "Print Electricien"
 	
 remotesync func printData():
 	print(click)

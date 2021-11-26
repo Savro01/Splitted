@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Tileset/chests.tres" type="TileSet" id=2]
 [ext_resource path="res://Assets/Tileset/icons.tres" type="TileSet" id=3]
 [ext_resource path="res://Assets/Tileset/decoration.tres" type="TileSet" id=4]
-[ext_resource path="res://Scenes/DragElements/FileDrag.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/BetterDrag/FileDrag.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Map/Cockpit.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -66,9 +65,6 @@ cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 327701, 2, 196613, 1310722, 2, 131087, 1310757, 2, 327682, 1507346, 1610612738, 262146, 1572883, 2, 393225, 2031619, -1073741822, 327684, 2424835, -1073741822, 196614, 2424868, -1610612734, 196614 )
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 641.12, 328.173 )
-
 [node name="Popup" parent="." instance=ExtResource( 5 )]
 
 [node name="ZonePilotage" type="Area2D" parent="."]
@@ -106,6 +102,9 @@ shape = SubResource( 5 )
 [node name="CollisionBoutton" type="CollisionShape2D" parent="ZoneBoutton"]
 position = Vector2( 79.2078, 671.376 )
 shape = SubResource( 6 )
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( 640.191, 334.809 )
 
 [connection signal="body_entered" from="ZonePilotage" to="." method="_on_ZonePilotage_body_entered"]
 [connection signal="body_exited" from="ZonePilotage" to="." method="_on_ZonePilotage_body_exited"]

@@ -1,5 +1,30 @@
 extends Node
 
+##const RPC_PORT = 8000
+##const MAX_PLAYER = 2
+##const OFFLINE_TESTING = false
+##
+##var IPClient = "localhost"
+var net_id = null
+##var is_host = false
+var peer_ids = []
+##
+##func initialize_server():
+##	is_host = true
+##	var peer = NetworkedMultiplayerENet.new()
+##	peer.create_server(RPC_PORT, MAX_PLAYER)
+##	get_tree().network_peer = peer
+##
+##func initialize_client(server_ip):
+##	server_ip = IPClient
+##	var peer = NetworkedMultiplayerENet.new()
+##	peer.create_client(server_ip, RPC_PORT)
+##	get_tree().network_peer = peer
+
+func set_ids():
+	net_id = get_tree().get_network_unique_id()
+	peer_ids = get_tree().get_network_connected_peers()
+
 var is_server
 var IPClient = "localhost"
 
@@ -43,7 +68,7 @@ remotesync func new_player_add(player_count):
 		players_ready_count += 1
 	if players_ready_count == MAX_PLAYER_COUNT:
 		rpc("emit_game_ready")
-		
+
 remotesync func emit_game_ready():
 	emit_signal("game_ready")
 

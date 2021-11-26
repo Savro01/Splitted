@@ -8,9 +8,9 @@ var currentArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Player/BodyCommandant.visible = true
-	$Player/BodyElectricien.visible = false
-	currentArea = null
+	pass
+#	currentArea = null
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,8 +46,10 @@ func _on_ZonePilotage_body_exited(body):
 	if(body is Player):
 		currentArea = null
 		print("sortie pilotage")
-		rset(R.test_com, "Print electricien")
-		print(R.test_com)
+		rpc("change")
+
+remote func change():
+	R.change_test_com()
 
 
 func _on_ZoneLivre_body_exited(body):
