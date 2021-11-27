@@ -8,6 +8,7 @@ var currentArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Player2/BodyElectricien.visible = false
 	pass
 #	currentArea = null
 	
