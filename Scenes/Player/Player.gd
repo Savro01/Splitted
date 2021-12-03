@@ -7,8 +7,12 @@ var velocity = Vector2.ZERO
 var isAndroid = OS.get_name() == "Android"
 
 func _ready():
-	for c in $Joystick.get_children():
+	if(!isAndroid):
+		self.remove_child($Joystick)
+	else:
+		for c in $Joystick.get_children():
 			c.visible = true
+	
 
 master func printdata(puppettext):
 	print(puppettext)

@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Tileset/chests.tres" type="TileSet" id=2]
 [ext_resource path="res://Assets/Tileset/icons.tres" type="TileSet" id=3]
 [ext_resource path="res://Assets/Tileset/decoration.tres" type="TileSet" id=4]
 [ext_resource path="res://Scenes/BetterDrag/FileDrag.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Font/GreatVibes-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Map/Cockpit.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Images/Notebook.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.0239, 16.3694 )
@@ -24,6 +26,10 @@ extents = Vector2( 16.0308, 14.8132 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 15.2252, 31.4805 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
+font_data = ExtResource( 6 )
 
 [node name="Cockpit" type="Node2D"]
 script = ExtResource( 7 )
@@ -105,6 +111,97 @@ shape = SubResource( 6 )
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2( 640.191, 334.809 )
+
+[node name="PopupNotebook" type="Popup" parent="."]
+margin_right = 369.0
+margin_bottom = 319.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Notebook" type="TextureRect" parent="PopupNotebook"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="LabelNuc" type="Label" parent="PopupNotebook"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 23.7027
+margin_top = 26.5243
+margin_right = 164.703
+margin_bottom = 95.5243
+custom_fonts/font = SubResource( 7 )
+text = "Code des missiles 
+  nucléaires : 1065"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelDechet" type="Label" parent="PopupNotebook"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 34.9233
+margin_top = 111.28
+margin_right = 181.923
+margin_bottom = 180.28
+custom_fonts/font = SubResource( 7 )
+text = " Code d'éjection des 
+déchets : 9584"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelTechnique" type="Label" parent="PopupNotebook"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 14.0323
+margin_top = 197.136
+margin_right = 179.032
+margin_bottom = 266.136
+custom_fonts/font = SubResource( 7 )
+text = "Code du service
+   technique : "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelNettoyage" type="Label" parent="PopupNotebook"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 209.109
+margin_top = 30.2919
+margin_right = 350.109
+margin_bottom = 99.2919
+custom_fonts/font = SubResource( 7 )
+text = " Code du service de
+nettoyage : 7216"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelCoffre" type="Label" parent="PopupNotebook"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 201.546
+margin_top = 116.995
+margin_right = 363.546
+margin_bottom = 185.995
+custom_fonts/font = SubResource( 7 )
+text = "Code du coffre-fort : 
+        5238"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelCale" type="Label" parent="PopupNotebook"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 205.36
+margin_top = 198.812
+margin_right = 350.36
+margin_bottom = 267.812
+custom_fonts/font = SubResource( 7 )
+text = "Code d'ouverture de
+  la soute : 3468"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="ZonePilotage" to="." method="_on_ZonePilotage_body_entered"]
 [connection signal="body_exited" from="ZonePilotage" to="." method="_on_ZonePilotage_body_exited"]
