@@ -2,11 +2,11 @@ extends Node
 
 remotesync var test_com = "Test de base"
 
-var rng = RandomNumberGenerator.new()
+
 
 var click = false;
 remotesync var electricite = false;
-remotesync var code_porte_soute = 0
+remotesync var code_porte = 0
 
 
 # Declare member variables here. Examples:
@@ -30,10 +30,8 @@ remotesync func setData(data):
 remote func change_electricite():
 	electricite = true
 
-remote func set_code_porte_soute(code):
-	print(code)
-	if (code_porte_soute == 0):
-		code_porte_soute = code
+remote func set_code_porte(code):
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

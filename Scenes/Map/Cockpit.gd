@@ -4,7 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var currentArea
+var currentArea = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,21 +29,23 @@ func _process(delta):
 		"ZoneLivre":
 			if Input.is_action_pressed("object_interact"):
 				if($PopupNotebook.visible == false):
+					print("Enter Notebook")
+					print($Player.get_child(0).get_global_position())
+					print($PopupNotebook.get_rect().size/2)
 					var v = $Player.get_child(0).get_global_position() - $PopupNotebook.get_rect().size/2
 					$PopupNotebook.set_global_position(v)
-					R.rng.randomize()
-					var code = R.rng.randi_range(1000, 9999)
-					$PopupNotebook/LabelTechnique.text = $PopupNotebook/LabelTechnique.text + str(code)
-#					change_code_porte(code)
-					$PopupNotebook.popup()
-					$Player.get_child(0).speed = 0
+					print($PopupNotebook.get_global_position())
+					print(v)
+					print($PopupNotebook.get_global_position())
+					change_code_porte()
 			if Input.is_action_pressed("ui_cancel"):
 				print("Echap pressed")
-				if $PopupNotebook.visible:
+				if ($PopupNotebook.visible == true):
 					print("Popup visible")
 					$Popup.hide()
 					$Player.get_child(0).speed = 100
 
+############################################ Gestion des Zones ############################################
 # Body Entered
 
 func _on_ZonePilotage_body_entered(body):
@@ -54,25 +56,29 @@ func _on_ZoneLivre_body_entered(body):
 	if(body is Player):
 		currentArea = "ZoneLivre"
 
-
 # Body Exited
 
 func _on_ZonePilotage_body_exited(body):
 	if(body is Player):
 		currentArea = null
 		print("sortie pilotage")
-		print(R.code_porte_soute)
-		rpc("change")
-
-remote func change():
-	R.change_test_com()
-
-#remote func change_code_porte(code):
-#	print(code)
-#	R.set_code_porte_soute(code)
 
 func _on_ZoneLivre_body_exited(body):
 	if(body is Player):
 		currentArea = null
 		print("sortie livre")
-	
+
+############################################ Gestion des signaux ############################################
+
+signal change_code_porte
+func change_code_porte():
+	emit_signal("change_code_porte")
+
+
+############################################ Gestion des fonctions annexes ############################################
+
+func popupNotebook(code):
+	print(code)
+	$PopupNotebook/LabelTechnique.text = $PopupNotebook/LabelTechnique.text + str(code)
+	$PopupNotebook.popup()
+	$Player.get_child(0).speed = 0
