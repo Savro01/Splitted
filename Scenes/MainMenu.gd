@@ -31,7 +31,6 @@ func _process(delta):
 		t.start()
 		yield(t, "timeout")
 		$Attente.hide()
-	
 
 func _on_Rejoindre_pressed():
 	$RejoindreContainer.show()

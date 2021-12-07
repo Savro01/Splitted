@@ -13,4 +13,6 @@ position = Vector2( 205.37, 63.0356 )
 [node name="Cockpit" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3956.85, -847.256 )
 
+[connection signal="electricite_changed" from="Vaisseau" to="." method="_on_Vaisseau_electricite_changed"]
 [connection signal="change_code_porte" from="Cockpit" to="." method="_on_Cockpit_change_code_porte"]
+[connection signal="change_tab_fils" from="Cockpit" to="." method="_on_Cockpit_change_tab_fils"]

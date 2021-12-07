@@ -28,11 +28,8 @@ func _process(delta):
 				$PopupFils.popup()
 				$Player.get_child(0).speed = 0
 			if Input.is_action_pressed("ui_cancel"):
-				print("Echap pressed")
-				if $PopupFils.visible:
-					print("Popup visible")
-					$PopupFils.hide()
-					$Player.get_child(0).speed = 100
+				$PopupFils.hide()
+				$Player.get_child(0).speed = 100
 		"ZoneDoor2":
 			if Input.is_action_pressed("object_interact"):
 				if($PopupCodePorte.visible == false):
@@ -41,11 +38,8 @@ func _process(delta):
 					$PopupCodePorte.popup()
 					$Player.get_child(0).speed = 0
 			if Input.is_action_pressed("ui_cancel"): 
-				print("Echap pressed")
-				if $PopupCodePorte.visible:
-					print("Popup visible")
-					$PopupCodePorte.hide()
-					$Player.get_child(0).speed = 100
+				$PopupCodePorte.hide()
+				$Player.get_child(0).speed = 100
 		"ZoneColle":
 			if Input.is_action_pressed("object_interact"):
 				colleObtenu = true
@@ -69,9 +63,7 @@ func _process(delta):
 
 ############################################ Gestion des portes ############################################
 func _on_Door1_body_entered(body):
-	if(body is Player):
-		print("body is Player")
-		print(R.code_porte)
+	if(body is Player and get_parent().electriciteRepare):
 		$Door1.tile_set = load("res://Assets/Tileset/door_without_coll.tres")
 		$Door1.visible = false
 
@@ -81,7 +73,8 @@ func _on_Door1_body_exited(body):
 		$Door1.visible = true
 
 func _on_Door2_body_entered(body):
-	currentArea = "ZoneDoor2"
+	if(body is Player and get_parent().electriciteRepare):
+		currentArea = "ZoneDoor2"
 	if(body is Player and porteUnlock):
 		$Door2.tile_set = load("res://Assets/Tileset/door_without_coll.tres")
 		$Door2.visible = false
@@ -174,6 +167,12 @@ func _on_ZoneTuyau3_body_exited(body):
 	if(body is Player):
 		currentArea = null
 
+############################################ Gestion des signaux ############################################
+
+signal electricite_changed
+func change_electricite_status():
+	emit_signal("electricite_changed")
+	
 ############################################ Gestion des tâches ############################################
 
 #Ouverture porte
@@ -221,5 +220,54 @@ func creation_fil(text_butt):
 	linkInst = link.instance()
 	linkInst.item1 = fil1
 	linkInst.item2 = text_butt
+	if fil1 == $PopupFils/BlueLeft:
+		linkInst.get_child(0).get_child(0).set_default_color(Color("#0100ff"))
+	elif fil1 == $PopupFils/PinkLeft:
+		linkInst.get_child(0).get_child(0).set_default_color(Color("#fe00fd"))
+	elif fil1 == $PopupFils/YellowLeft:
+		linkInst.get_child(0).get_child(0).set_default_color(Color("#fae806"))
+	else:
+		linkInst.get_child(0).get_child(0).set_default_color(Color("#ff0000"))
 	$PopupFils.add_child(linkInst)
 	fil1 = null
+
+func _on_TextureRectPoignee_pressed():
+	$PopupFils/TextureRectPoignee.rect_position.y = 165
+	if(verif_fil()):
+		change_electricite_status()
+	else:
+		#Jouer animation electricité ?
+		for i in range($PopupFils.get_child_count()):
+			if($PopupFils.get_child(i) is Link):
+				$PopupFils.get_child(i).queue_free()
+		$PopupFils/TextureRectPoignee.rect_position.y = 190
+
+func verif_fil():
+	var verif = true
+	for i in range($PopupFils.get_child_count()):
+		print($PopupFils.get_child(i))
+		if($PopupFils.get_child(i) is Link):
+			print(get_string_fil($PopupFils.get_child(i).item2))
+			if($PopupFils.get_child(i).item1 == $PopupFils/BlueLeft):
+				if(get_string_fil($PopupFils.get_child(i).item2) != get_parent().tabFils[0]):
+					verif = false
+			if($PopupFils.get_child(i).item1 == $PopupFils/PinkLeft):
+				if(get_string_fil($PopupFils.get_child(i).item2) != get_parent().tabFils[1]):
+					verif = false
+			if($PopupFils.get_child(i).item1 == $PopupFils/YellowLeft):
+				if(get_string_fil($PopupFils.get_child(i).item2) != get_parent().tabFils[2]):
+					verif = false
+			if($PopupFils.get_child(i).item1 == $PopupFils/RedLeft):
+				if(get_string_fil($PopupFils.get_child(i).item2) != get_parent().tabFils[3]):
+					verif = false
+	return verif
+
+func get_string_fil(texture):
+	if(texture == $PopupFils/BlueRight):
+		return "Bleu"
+	if(texture == $PopupFils/PinkRight):
+		return "Rose"
+	if(texture == $PopupFils/YellowRight):
+		return "Jaune"
+	if(texture == $PopupFils/RedRight):
+		return "Rouge"

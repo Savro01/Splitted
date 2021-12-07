@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Tileset/chests.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Font/GreatVibes-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Map/Cockpit.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Images/Notebook.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Images/carnet_spirale.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.0239, 16.3694 )
@@ -29,6 +30,18 @@ extents = Vector2( 15.2252, 31.4805 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 25
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 34
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 34
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 34
 font_data = ExtResource( 6 )
 
 [node name="Cockpit" type="Node2D"]
@@ -215,7 +228,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PopupCarnetSpirale" type="Popup" parent="."]
+margin_right = 300.0
+margin_bottom = 420.0
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="PopupCarnetSpirale"]
+margin_right = 300.0
+margin_bottom = 420.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="LabelExtincteur" type="Label" parent="PopupCarnetSpirale"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 46.946
+margin_top = 53.5297
+margin_right = 242.946
+margin_bottom = 142.53
+custom_fonts/font = SubResource( 8 )
+text = "Achat de nouveaux 
+	  extincteurs : x10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelFils" type="Label" parent="PopupCarnetSpirale"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 21.0
+margin_top = 162.0
+margin_right = 265.0
+margin_bottom = 309.0
+custom_fonts/font = SubResource( 9 )
+text = "   Ordre des fils du 
+disjoncteur : "
+
+[node name="Label" type="Label" parent="PopupCarnetSpirale"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 19.2368
+margin_top = 329.255
+margin_right = 281.237
+margin_bottom = 372.255
+custom_fonts/font = SubResource( 10 )
+text = "Nouveaux PC demandé"
+
 [connection signal="body_entered" from="ZonePilotage" to="." method="_on_ZonePilotage_body_entered"]
 [connection signal="body_exited" from="ZonePilotage" to="." method="_on_ZonePilotage_body_exited"]
 [connection signal="body_entered" from="ZoneLivre" to="." method="_on_ZoneLivre_body_entered"]
 [connection signal="body_exited" from="ZoneLivre" to="." method="_on_ZoneLivre_body_exited"]
+[connection signal="body_entered" from="ZoneCarnet" to="." method="_on_ZoneCarnet_body_entered"]
+[connection signal="body_exited" from="ZoneCarnet" to="." method="_on_ZoneCarnet_body_exited"]

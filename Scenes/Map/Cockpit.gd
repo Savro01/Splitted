@@ -23,27 +23,26 @@ func _process(delta):
 					$Popup.show()
 					$Player.speed = 0
 			if Input.is_action_pressed("ui_cancel"):
-				if $Popup.visible:
-					$Popup.hide()
-					$Player.speed = 100
+				$Popup.hide()
+				$Player.speed = 100
+		"ZoneCarnet":
+			if Input.is_action_pressed("object_interact"):
+				if($PopupCarnetSpirale.visible == false):
+					var v = $Player.get_child(0).get_global_position() - $PopupCarnetSpirale.get_rect().size/2
+					$PopupCarnetSpirale.set_global_position(v)
+					change_tab_fils()
+			if Input.is_action_pressed("ui_cancel"):
+				$PopupCarnetSpirale.hide()
+				$Player.get_child(0).speed = 100			
 		"ZoneLivre":
 			if Input.is_action_pressed("object_interact"):
-				if($PopupNotebook.visible == false):
-					print("Enter Notebook")
-					print($Player.get_child(0).get_global_position())
-					print($PopupNotebook.get_rect().size/2)
-					var v = $Player.get_child(0).get_global_position() - $PopupNotebook.get_rect().size/2
+				if($PopupCarnetSpirale.visible == false):
+					var v = $Player.get_child(0).get_global_position() - $PopupCarnetSpirale.get_rect().size/2
 					$PopupNotebook.set_global_position(v)
-					print($PopupNotebook.get_global_position())
-					print(v)
-					print($PopupNotebook.get_global_position())
 					change_code_porte()
 			if Input.is_action_pressed("ui_cancel"):
-				print("Echap pressed")
-				if ($PopupNotebook.visible == true):
-					print("Popup visible")
-					$Popup.hide()
-					$Player.get_child(0).speed = 100
+				$PopupNotebook.hide()
+				$Player.get_child(0).speed = 100
 
 ############################################ Gestion des Zones ############################################
 # Body Entered
@@ -55,6 +54,10 @@ func _on_ZonePilotage_body_entered(body):
 func _on_ZoneLivre_body_entered(body):
 	if(body is Player):
 		currentArea = "ZoneLivre"
+
+func _on_ZoneCarnet_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneCarnet"
 
 # Body Exited
 
@@ -68,17 +71,33 @@ func _on_ZoneLivre_body_exited(body):
 		currentArea = null
 		print("sortie livre")
 
+func _on_ZoneCarnet_body_exited(body):
+	if(body is Player):
+		currentArea = null
 ############################################ Gestion des signaux ############################################
 
 signal change_code_porte
 func change_code_porte():
 	emit_signal("change_code_porte")
 
+signal change_tab_fils
+func change_tab_fils():
+	emit_signal("change_tab_fils")
 
 ############################################ Gestion des fonctions annexes ############################################
 
-func popupNotebook(code):
-	print(code)
-	$PopupNotebook/LabelTechnique.text = $PopupNotebook/LabelTechnique.text + str(code)
+func popupNotebook(code, codeGenere):
+	if(!codeGenere):
+		$PopupNotebook/LabelTechnique.text = $PopupNotebook/LabelTechnique.text + str(code)
 	$PopupNotebook.popup()
+	$Player.get_child(0).speed = 0
+
+func popupCarnetSpirale(tab, melange):
+	if(!melange):
+		for i in range(len(tab)):
+			$PopupCarnetSpirale/LabelFils.text = $PopupCarnetSpirale/LabelFils.text + tab[i] + " "
+			if (i == 0):
+				$PopupCarnetSpirale/LabelFils.text = $PopupCarnetSpirale/LabelFils.text + "\n"
+	$PopupCarnetSpirale.popup() 
+	print(tab)
 	$Player.get_child(0).speed = 0

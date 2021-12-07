@@ -5,8 +5,13 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var CommandantCree = false
-remotesync var code_porte = 0
 var rng = RandomNumberGenerator.new()
+remotesync var code_porte = 0
+remotesync var electriciteRepare = false
+remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
+var tabmelange = false
+var codeGenere = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,18 +37,36 @@ func _on_Cockpit_change_code_porte():
 	print("Signal recu")
 	rng.randomize()
 	var code = rng.randi_range(1000, 9999)
-	$Cockpit.popupNotebook(code)
+	$Cockpit.popupNotebook(code, codeGenere)
 	rpc("set_code_porte", code)
+	set_code_porte(code)
 
 remote func set_code_porte(code):
-	print(code)
-	if (code_porte == 0):
+	if (!codeGenere):
 		code_porte = code
+		codeGenere = true
 
-#remote func set_code_porte(code):
-#	rpc("R.set_code_porte_soute",code)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_Vaisseau_electricite_changed():
+	rpc("changed_electricite")
+	changed_electricite()
 
+remote func changed_electricite():
+	electriciteRepare = true
+	print("Electricité Réparé !")
 
+func _on_Cockpit_change_tab_fils():
+	print(tabmelange)
+	var tab = tabFils
+	if(!tabmelange):
+		randomize()
+		tab.shuffle()
+		$Cockpit.popupCarnetSpirale(tab, tabmelange)
+		rpc("set_tab_fils", tab)
+		set_tab_fils(tab)
+	else:
+		$Cockpit.popupCarnetSpirale(tab, tabmelange)
+
+remote func set_tab_fils(tab):
+	if(!tabmelange):
+		tabFils = tab
+		tabmelange = true
