@@ -5,6 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var link = preload("res://Scenes/Animated/Link.tscn")
+var bouclier = preload("res://Scenes/Animated/bouclier.tscn")
 var linkInst = null
 var currentArea = null
 var porteUnlock = false
@@ -13,6 +14,9 @@ var tuyau1repare = false
 var tuyau2repare = false
 var tuyau3repare = false
 var fil1 = null
+var nb_bouclier = 0
+var nb_bouclier_lock = 0
+var bouclierRepare = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,6 +64,35 @@ func _process(delta):
 				tuyau3repare = true
 				if(has_node("ZoneTuyau3/Gaz3")):
 					$ZoneTuyau3/Gaz3.queue_free()
+		"ZoneBouclier1":
+			if Input.is_action_pressed("object_interact"):
+				nb_bouclier += 1
+				if(has_node("Bouclier1")):
+					$Bouclier1.queue_free()
+		"ZoneBouclier2":
+			if Input.is_action_pressed("object_interact"):
+				nb_bouclier += 1
+				if(has_node("Bouclier2")):
+					$Bouclier2.queue_free()
+		"ZoneBouclier":
+			if Input.is_action_pressed("object_interact"):
+				print("Zone bouclier")
+				if($PopupBouclier.visible == false):
+					print("nb bouclier")
+					print(nb_bouclier)
+					for i in nb_bouclier:
+						print("Dans le for")
+						var boucInst = bouclier.instance()
+						boucInst.connect("bouclierLock", self, "_on_bouclier_bouclierLock")
+						$PopupBouclier.add_child(boucInst)
+						nb_bouclier -= 1
+					var v = $Player.get_child(0).get_global_position() - $PopupBouclier.get_rect().size/2
+					$PopupBouclier.set_global_position(v)
+					$PopupBouclier.popup()
+					$Player.get_child(0).speed = 0
+			if Input.is_action_pressed("ui_cancel"): 
+				$PopupBouclier.hide()
+				$Player.get_child(0).speed = 100
 
 ############################################ Gestion des portes ############################################
 func _on_Door1_body_entered(body):
@@ -80,6 +113,7 @@ func _on_Door2_body_entered(body):
 		$Door2.visible = false
 
 func _on_Door2_body_exited(body):
+	currentArea = null
 	if(body is Player):
 		$Door2.tile_set = load("res://Assets/Tileset/door_with_coll.tres")
 		$Door2.visible = true
@@ -167,6 +201,30 @@ func _on_ZoneTuyau3_body_exited(body):
 	if(body is Player):
 		currentArea = null
 
+func _on_ZoneBouclier1_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneBouclier1"
+
+func _on_ZoneBouclier1_body_exited(body):
+	if(body is Player):
+		currentArea = null
+
+func _on_ZoneBouclier2_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneBouclier2"
+
+func _on_ZoneBouclier2_body_exited(body):
+	if(body is Player):
+		currentArea = null
+
+func _on_ZoneBouclier_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneBouclier"
+
+
+func _on_ZoneBouclier_body_exited(body):
+	if(body is Player):
+		currentArea = null
 ############################################ Gestion des signaux ############################################
 
 signal electricite_changed
@@ -271,3 +329,13 @@ func get_string_fil(texture):
 		return "Jaune"
 	if(texture == $PopupFils/RedRight):
 		return "Rouge"
+
+func _on_bouclier_bouclierLock():
+	nb_bouclier_lock += 1
+	if(nb_bouclier_lock >= 2):
+		bouclierRepare = true
+
+####Func bouton
+func bouton_appuyer():
+	if (bouclierRepare and tuyau1repare and tuyau2repare and tuyau3repare):
+		true

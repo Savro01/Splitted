@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/Font/Computer-z2aL.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Assets/Images/fils.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Images/poignee.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Images/lever.jpg" type="Texture" id=11]
+[ext_resource path="res://Assets/Images/bouclier.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Images/Generateur_2_bouclier.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 41.1456, 15.6616 )
@@ -39,22 +41,18 @@ extents = Vector2( 32.3179, 34.8721 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 32.6392, 28.6919 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 51.7697, 51.1735 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 33.6635, 29.4023 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 20.8452, 20.9384 )
+
+[sub_resource type="DynamicFont" id=13]
 size = 14
 font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=11]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 197, 189 )
-
-[sub_resource type="StyleBoxTexture" id=12]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 197, 189 )
-modulate_color = Color( 0.435294, 0.584314, 0.870588, 1 )
-
-[sub_resource type="StyleBoxTexture" id=13]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 197, 189 )
 
 [sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 6 )
@@ -63,8 +61,21 @@ region_rect = Rect2( 0, 0, 197, 189 )
 [sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 197, 189 )
+modulate_color = Color( 0.435294, 0.584314, 0.870588, 1 )
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 197, 189 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 197, 189 )
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 197, 189 )
+
+[sub_resource type="DynamicFont" id=19]
 size = 20
 font_data = ExtResource( 1 )
 
@@ -147,7 +158,7 @@ position = Vector2( 914.958, 951.262 )
 tile_set = ExtResource( 5 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -1441805, -1610612734, 196615, -1441803, 2, 196616, -1245194, 2, 196616, -1179664, 1, 393222, -1114128, 1, 393222, -1114125, -1073741823, 720903, -1114099, 2, 196616, -1114098, -1610612734, 196616, -983057, 2, 131075, -983049, 2, 131075, -983030, 2, 131075, -983022, 2, 131075, -917493, 1, 393222, -917492, 1, 393222, -917488, -1073741823, 720903, -720913, -1610612734, 196616, -720912, -1610612734, 196616, -720905, 1610612737, 720903, -786414, -1610612734, 196615, -589845, 2, 196616, -589833, -1610612734, 196616, -589832, -1610612734, 196616, -589830, -1610612734, 196616, -589829, -1610612734, 196616, -589827, -1073741822, 458752, -589826, 1610612738, 393217, -589825, 1610612738, 393217, -655360, 1610612738, 393217, -655359, 1610612738, 458753, -655358, 1610612738, 393217, -655357, -1073741822, 393216, -655356, -1073741822, 393216, -655355, 1610612738, 458752, -655354, -1610612734, 196616, -655353, -1610612734, 196616, -655351, -1073741823, 262145, -655350, -1073741823, 327687, -655349, -1073741823, 327687, -655348, -1073741823, 327680, -655340, 2, 196616, -524296, -1610612734, 196616, -589817, -1610612734, 196616, -589815, 1, 327687, -589805, 1, 393222, -458772, -1610612734, 393231, -458769, 1, 393222, -458763, -1073741823, 720903, -458757, 1610612737, 720903, -458756, 1, 65550, -524279, 1, 327687, -524269, 1, 393222, -393218, 1, 393222, -458749, -1610612735, 720903, -458743, -1073741823, 327680, -458741, 1, 720903, -393194, 1, 655365, -262149, 1, 393222, -327658, -1073741823, 589826, -262122, -1073741823, 589826, -131094, -1610612734, 196615, -131089, -1610612735, 720903, -196586, -1610612734, 393220, -131050, -1610612734, 393220, -65523, 1, 458758, -65522, 1, 458759, -65514, -1073741823, 589826, 65517, 1, 393222, 5, 1, 720903, 13, 1, 524294, 14, 1, 524295, 22, -1073741823, 589826, 131063, 1, 393222, 131064, 2, 458752, 131069, -1073741823, 720903, 65554, -1610612735, 720903, 65558, 1610612737, 655365, 196587, -1610612734, 196616, 196600, -1610612734, 393217, 131075, 1, 393222, 262123, -1610612734, 196616, 262124, -1610612734, 196616, 262134, 2, 458752, 262135, 1610612738, 393217, 262136, 1610612738, 524289, 262138, 2, 196616, 327678, -1610612734, 196615, 262151, -1610612734, 196616, 262153, -1610612734, 196615, 262166, -1610612734, 196616, 393207, -1610612734, 196616, 458751, -1610612734, 196615, 393223, 2, 524288, 393227, 1610612737, 720903, 393237, -1610612734, 196616, 393238, -1610612734, 196616, 524277, 1, 393222, 458759, 2, 393216, 524291, 1, 720903, 524295, 2, 393216, 524300, 1, 393222, 655343, 2, 131075, 655351, 2, 131075, 589825, 2, 131075, 589826, -1073741822, 196616, 589827, -1073741822, 196616, 589831, 2, 393216, 589834, 2, 393231, 720881, -1610612735, 720903, 655363, -1073741822, 196616, 655367, -1073741822, 458752, 655369, 2, 131075, 655381, 2, 131075, 786421, 1, 65550, 720915, -1610612735, 720903, 851958, -1610612735, 327680, 786443, -1073741823, 327687, 786444, -1073741823, 327687, 786445, 1610612737, 327680, 917493, -1610612735, 327680, 917494, -1610612735, 262146, 851981, -1073741823, 262145, 851982, 1610612737, 327680, 983029, 1, 327687, 917519, 2, 196616, 917520, -1610612734, 196615, 1048565, 1, 327687, 1114097, 2, 196616, 1114098, 2, 196616, 1114099, -1610612734, 196615, 1114101, 1, 327680 )
+tile_data = PoolIntArray( -1441805, -1610612734, 196615, -1441803, 2, 196616, -1245194, 2, 196616, -1179664, 1, 393222, -1114128, 1, 393222, -1114125, -1073741823, 720903, -1114099, 2, 196616, -1114098, -1610612734, 196616, -983057, 2, 131075, -983049, 2, 131075, -983030, 2, 131075, -983022, 2, 131075, -917493, 1, 393222, -917492, 1, 393222, -917488, -1073741823, 720903, -720913, -1610612734, 196616, -720912, -1610612734, 196616, -720905, 1610612737, 720903, -786414, -1610612734, 196615, -589845, 2, 196616, -589833, -1610612734, 196616, -589832, -1610612734, 196616, -589830, -1610612734, 196616, -589829, -1610612734, 196616, -589827, -1073741822, 458752, -589826, 1610612738, 393217, -589825, 1610612738, 393217, -655360, 1610612738, 393217, -655359, 1610612738, 458753, -655358, 1610612738, 393217, -655357, -1073741822, 393216, -655356, -1073741822, 393216, -655355, 1610612738, 458752, -655354, -1610612734, 196616, -655353, -1610612734, 196616, -655351, -1073741823, 262145, -655350, -1073741823, 327687, -655349, -1073741823, 327687, -655348, -1073741823, 327680, -655340, 2, 196616, -524296, -1610612734, 196616, -589817, -1610612734, 196616, -589815, 1, 327687, -589805, 1, 393222, -458772, -1610612734, 393231, -458769, 1, 393222, -458763, -1073741823, 720903, -458757, 1610612737, 720903, -458756, 1, 65550, -524279, 1, 327687, -524269, 1, 393222, -393218, 1, 393222, -458749, -1610612735, 720903, -458743, -1073741823, 327680, -458741, 1, 720903, -393194, 1, 655365, -262149, 1, 393222, -327658, -1073741823, 589826, -262122, -1073741823, 589826, -131094, -1610612734, 196615, -131089, -1610612735, 720903, -196586, -1610612734, 393220, -131050, -1610612734, 393220, -65523, 1, 458758, -65522, 1, 458759, -65514, -1073741823, 589826, 65517, 1, 393222, 5, 1, 720903, 13, 1, 524294, 14, 1, 524295, 22, -1073741823, 589826, 131063, 1, 393222, 131064, 2, 458752, 131069, -1073741823, 720903, 65554, -1610612735, 720903, 65558, 1610612737, 655365, 196587, -1610612734, 196616, 196600, -1610612734, 393217, 196603, 1, 655370, 196604, 1, 655371, 131075, 1, 393222, 262123, -1610612734, 196616, 262124, -1610612734, 196616, 262134, 2, 458752, 262135, 1610612738, 393217, 262136, 1610612738, 524289, 262138, 2, 196616, 262139, 1, 720906, 262140, 1, 720907, 327678, -1610612734, 196615, 262151, -1610612734, 196616, 262153, -1610612734, 196615, 262166, -1610612734, 196616, 393207, -1610612734, 196616, 458751, -1610612734, 196615, 393223, 2, 524288, 393227, 1610612737, 720903, 393237, -1610612734, 196616, 393238, -1610612734, 196616, 524277, 1, 393222, 458759, 2, 393216, 524291, 1, 720903, 524295, 2, 393216, 524300, 1, 393222, 655343, 2, 131075, 655351, 2, 131075, 589825, 2, 131075, 589826, -1073741822, 196616, 589827, -1073741822, 196616, 589831, 2, 393216, 589834, 2, 393231, 720881, -1610612735, 720903, 655363, -1073741822, 196616, 655367, -1073741822, 458752, 655369, 2, 131075, 655381, 2, 131075, 786421, 1, 65550, 720915, -1610612735, 720903, 851958, -1610612735, 327680, 786443, -1073741823, 327687, 786444, -1073741823, 327687, 786445, 1610612737, 327680, 917493, -1610612735, 327680, 917494, -1610612735, 262146, 851981, -1073741823, 262145, 851982, 1610612737, 327680, 983029, 1, 327687, 917519, 2, 196616, 917520, -1610612734, 196615, 1048565, 1, 327687, 1114097, 2, 196616, 1114098, 2, 196616, 1114099, -1610612734, 196615, 1114101, 1, 327680 )
 
 [node name="TileMapColle" type="TileMap" parent="."]
 position = Vector2( 914.958, 951.262 )
@@ -245,6 +256,47 @@ position = Vector2( 648.854, 1039.15 )
 rotation = -0.872665
 scale = Vector2( 0.1, 0.1 )
 
+[node name="ZoneBouclier" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneBouclier"]
+position = Vector2( 786.89, 1046.68 )
+shape = SubResource( 10 )
+
+[node name="Bouclier1" type="TextureRect" parent="."]
+margin_left = 1427.0
+margin_top = 441.0
+margin_right = 1459.0
+margin_bottom = 473.0
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ZoneBouclier1" type="Area2D" parent="Bouclier1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouclier1/ZoneBouclier1"]
+position = Vector2( 9.5, 21.5 )
+shape = SubResource( 11 )
+
+[node name="Bouclier2" type="TextureRect" parent="."]
+margin_left = 883.561
+margin_top = 1207.02
+margin_right = 915.561
+margin_bottom = 1239.02
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ZoneBouclier2" type="Area2D" parent="Bouclier2"]
+position = Vector2( 0.561157, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouclier2/ZoneBouclier2"]
+position = Vector2( 20.4737, 11.0243 )
+shape = SubResource( 12 )
+
 [node name="PopupCodePorte" type="Popup" parent="."]
 margin_left = 914.958
 margin_top = 951.262
@@ -272,7 +324,7 @@ margin_left = 19.0
 margin_top = 16.0
 margin_right = -17.0
 margin_bottom = -16.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 text = "                Porte vérrouiller 
 Entrez  le code de dévérrouillage."
 uppercase = true
@@ -292,12 +344,12 @@ __meta__ = {
 margin_top = 97.0
 margin_right = 240.0
 margin_bottom = 162.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/focus = SubResource( 13 )
-custom_styles/disabled = SubResource( 14 )
-custom_styles/normal = SubResource( 15 )
-custom_fonts/font = SubResource( 16 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 18 )
+custom_fonts/font = SubResource( 19 )
 text = "Déverrouiller porte"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -419,6 +471,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PopupBouclier" type="Popup" parent="."]
+visible = true
+margin_right = 820.0
+margin_bottom = 479.0
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="PopupBouclier"]
+margin_left = 300.0
+margin_right = 580.0
+margin_bottom = 477.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="body_entered" from="Node2D/Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_exited" from="Node2D/Door1" to="." method="_on_Door1_body_exited"]
 [connection signal="body_entered" from="Node2D/Door2" to="." method="_on_Door2_body_entered"]
@@ -441,6 +512,12 @@ __meta__ = {
 [connection signal="body_exited" from="ZoneTuyau2" to="." method="_on_ZoneTuyau2_body_exited"]
 [connection signal="body_entered" from="ZoneTuyau3" to="." method="_on_ZoneTuyau3_body_entered"]
 [connection signal="body_exited" from="ZoneTuyau3" to="." method="_on_ZoneTuyau3_body_exited"]
+[connection signal="body_entered" from="ZoneBouclier" to="." method="_on_ZoneBouclier_body_entered"]
+[connection signal="body_exited" from="ZoneBouclier" to="." method="_on_ZoneBouclier_body_exited"]
+[connection signal="body_entered" from="Bouclier1/ZoneBouclier1" to="." method="_on_ZoneBouclier1_body_entered"]
+[connection signal="body_exited" from="Bouclier1/ZoneBouclier1" to="." method="_on_ZoneBouclier1_body_exited"]
+[connection signal="body_entered" from="Bouclier2/ZoneBouclier2" to="." method="_on_ZoneBouclier2_body_entered"]
+[connection signal="body_exited" from="Bouclier2/ZoneBouclier2" to="." method="_on_ZoneBouclier2_body_exited"]
 [connection signal="pressed" from="PopupCodePorte/ButtonEntrerCode" to="." method="_on_ButtonEntrerCode_pressed"]
 [connection signal="pressed" from="PopupFils/TextureRectPoignee" to="." method="_on_TextureRectPoignee_pressed"]
 [connection signal="button_down" from="PopupFils/BlueLeft" to="." method="_on_BlueLeft_button_down"]

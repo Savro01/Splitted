@@ -7,11 +7,10 @@ extends Node2D
 var CommandantCree = false
 var rng = RandomNumberGenerator.new()
 remotesync var code_porte = 0
-remotesync var electriciteRepare = false
+remotesync var electriciteRepare = true
 remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
 var tabmelange = false
 var codeGenere = false
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
