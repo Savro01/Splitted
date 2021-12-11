@@ -38,15 +38,12 @@ signal game_ready
 
 func start(as_server):
 	is_server = as_server
-	print(is_server)
 	var peer = NetworkedMultiplayerENet.new()
 
 	if is_server:
-		print("Creation serveur + player 1")
 		peer.create_server(8000, MAX_PLAYER_COUNT)
 		create_player(1)
 	else:
-		print("Création client)")
 		peer.create_client(IPClient, 8000) #Changer localhost par IP
 
 	get_tree().network_peer = peer

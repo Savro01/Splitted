@@ -104,5 +104,4 @@ func near_folder():
 				# si le dossier est la poubelle, il est réutilisable
 				if not selectedFolder.is_in_group("bin"):
 					filled_folders.append(selectedFolder.color.to_html(false))
-					print(folders)
 					folders.erase(selectedFolder) 		# on supprime le dossier de la liste -> non draggable

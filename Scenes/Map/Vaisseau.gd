@@ -76,12 +76,8 @@ func _process(delta):
 					$Bouclier2.queue_free()
 		"ZoneBouclier":
 			if Input.is_action_pressed("object_interact"):
-				print("Zone bouclier")
 				if($PopupBouclier.visible == false):
-					print("nb bouclier")
-					print(nb_bouclier)
 					for i in nb_bouclier:
-						print("Dans le for")
 						var boucInst = bouclier.instance()
 						boucInst.connect("bouclierLock", self, "_on_bouclier_bouclierLock")
 						$PopupBouclier.add_child(boucInst)
@@ -230,12 +226,19 @@ func _on_ZoneBouclier_body_exited(body):
 signal electricite_changed
 func change_electricite_status():
 	emit_signal("electricite_changed")
-	
+
+signal button_elec_pressed
+func change_button_pressed():
+	emit_signal("button_elec_pressed")
+
+signal button_elec_unpressed
+func change_button_unpressed():
+	emit_signal("button_elec_unpressed")
+
 ############################################ Gestion des tâches ############################################
 
 #Ouverture porte
 func _on_ButtonEntrerCode_pressed():
-	print(get_parent().code_porte)
 	if($PopupCodePorte/CodeEnter.text == str(get_parent().code_porte)):
 		porteUnlock = true
 		$PopupCodePorte.hide()
@@ -303,9 +306,7 @@ func _on_TextureRectPoignee_pressed():
 func verif_fil():
 	var verif = true
 	for i in range($PopupFils.get_child_count()):
-		print($PopupFils.get_child(i))
 		if($PopupFils.get_child(i) is Link):
-			print(get_string_fil($PopupFils.get_child(i).item2))
 			if($PopupFils.get_child(i).item1 == $PopupFils/BlueLeft):
 				if(get_string_fil($PopupFils.get_child(i).item2) != get_parent().tabFils[0]):
 					verif = false
@@ -335,7 +336,11 @@ func _on_bouclier_bouclierLock():
 	if(nb_bouclier_lock >= 2):
 		bouclierRepare = true
 
-####Func bouton
-func bouton_appuyer():
-	if (bouclierRepare and tuyau1repare and tuyau2repare and tuyau3repare):
-		true
+func _on_TextureButton_button_down():
+	if(tuyau1repare and tuyau2repare and tuyau3repare and bouclierRepare):
+		$PopupBoutonElec/TextureButton.modulate == Color("0e78fc")
+		change_button_pressed()
+
+func _on_TextureButton_button_up():
+	$PopupBoutonElec/TextureButton.modulate == Color("ffffff")
+	change_button_unpressed()

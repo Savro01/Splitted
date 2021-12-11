@@ -5,12 +5,14 @@ extends Node2D
 # var b = "text"
 
 var currentArea = null
+var tabMorse = ["D\nA\nL\nE\nK\nS", "S\nO\nN\nT\nA\nR\nI\nE\nN\nS", "C\nY\nB\nE\nR\nM\nE\nN\nS"]
+var boiteNoireDecoder = false
+var shipAlign = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-#	currentArea = null
-	
+	randomize()
+	tabMorse.shuffle()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,6 +32,7 @@ func _process(delta):
 				if($PopupCarnetSpirale.visible == false):
 					var v = $Player.get_child(0).get_global_position() - $PopupCarnetSpirale.get_rect().size/2
 					$PopupCarnetSpirale.set_global_position(v)
+					$Player.get_child(0).speed = 0
 					change_tab_fils()
 			if Input.is_action_pressed("ui_cancel"):
 				$PopupCarnetSpirale.hide()
@@ -39,9 +42,31 @@ func _process(delta):
 				if($PopupCarnetSpirale.visible == false):
 					var v = $Player.get_child(0).get_global_position() - $PopupCarnetSpirale.get_rect().size/2
 					$PopupNotebook.set_global_position(v)
+					$Player.get_child(0).speed = 0
 					change_code_porte()
 			if Input.is_action_pressed("ui_cancel"):
 				$PopupNotebook.hide()
+				$Player.get_child(0).speed = 100
+		"ZoneBoiteNoire":
+			if Input.is_action_pressed("object_interact"):
+				if($PopupBoiteNoire.visible == false and get_parent().electriciteRepare):
+					var v = $Player.get_child(0).get_global_position() - $PopupBoiteNoire.get_rect().size/2
+					$PopupBoiteNoire.set_global_position(v)
+					$PopupBoiteNoire/Panel/Label.text = tabMorse[0]
+					$Player.get_child(0).speed = 0
+					$PopupBoiteNoire.popup()
+			if Input.is_action_pressed("ui_cancel"):
+				$PopupBoiteNoire.hide()
+				$Player.get_child(0).speed = 100
+		"ZoneBouton":
+			if Input.is_action_pressed("object_interact"):
+				if($PopupBoutonCom.visible == false):
+					var v = $Player.get_child(0).get_global_position() - $PopupBoutonCom.get_rect().size/2
+					$PopupBoutonCom.set_global_position(v)
+					$Player.get_child(0).speed = 0
+					$PopupBoutonCom.popup()
+			if Input.is_action_pressed("ui_cancel"):
+				$PopupBoutonCom.hide()
 				$Player.get_child(0).speed = 100
 
 ############################################ Gestion des Zones ############################################
@@ -59,21 +84,40 @@ func _on_ZoneCarnet_body_entered(body):
 	if(body is Player):
 		currentArea = "ZoneCarnet"
 
+func _on_ZoneBoiteNoire_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneBoiteNoire"
+
+func _on_ZoneBouton_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneBouton"
+
 # Body Exited
 
 func _on_ZonePilotage_body_exited(body):
 	if(body is Player):
 		currentArea = null
-		print("sortie pilotage")
 
 func _on_ZoneLivre_body_exited(body):
 	if(body is Player):
 		currentArea = null
-		print("sortie livre")
 
 func _on_ZoneCarnet_body_exited(body):
 	if(body is Player):
 		currentArea = null
+
+func _on_ZoneBoiteNoire_body_exited(body):
+	if(body is Player):
+		currentArea = null
+
+func _on_ZoneCodeMorse_body_exited(body):
+	if(body is Player):
+		currentArea = null
+
+func _on_ZoneBouton_body_exited(body):
+	if(body is Player):
+		currentArea = null
+
 ############################################ Gestion des signaux ############################################
 
 signal change_code_porte
@@ -83,6 +127,50 @@ func change_code_porte():
 signal change_tab_fils
 func change_tab_fils():
 	emit_signal("change_tab_fils")
+
+signal button_com_pressed
+func change_button_pressed():
+	emit_signal("button_com_pressed")
+
+signal button_com_unpressed
+func change_button_unpressed():
+	emit_signal("button_com_unpressed")
+	
+############################################ Gestion des tâches ############################################
+
+func _on_Button_pressed():
+	var line = $PopupBoiteNoire/Panel2/LineEdit.text
+	if(tabMorse[0] == "D\nA\nL\nE\nK\nS"):
+		if (line == "Daleks" or line == "DALEKS" or line == "daleks"):
+			boiteNoireDecoder = true
+			$PopupBoiteNoire/Panel2/Label2.text = "Boite \n décodé"
+			$PopupBoiteNoire/Panel2/LineEdit.text = ""
+		else:
+			$PopupBoiteNoire/Panel2/LineEdit.text = ""
+	elif(tabMorse[0] == "S\nO\nN\nT\nA\nR\nI\nE\nN\nS"):
+		if (line == "Sontariens" or line == "SONTARIENS" or line == "sontariens"):
+			$PopupBoiteNoire/Panel2/Label2.text = "Boite \n décodé"
+			$PopupBoiteNoire/Panel2/LineEdit.text = ""
+			boiteNoireDecoder = true
+		else:
+			$PopupBoiteNoire/Panel2/LineEdit.text = ""
+	elif(tabMorse[0] == "C\nY\nB\nE\nR\nM\nE\nN\nS"):
+		if (line == "Cybermens" or line == "CYBERMENS" or line == "cybermens"):
+			boiteNoireDecoder = true
+			$PopupBoiteNoire/Panel2/Label2.text = "Boite \n décodé"
+			$PopupBoiteNoire/Panel2/LineEdit.text = ""
+		else:
+			$PopupBoiteNoire/Panel2/LineEdit.text = ""
+
+func _on_TextureButton_button_up():
+	if(boiteNoireDecoder and shipAlign):
+		$PopupBoutonCom/TextureButton.modulate == Color("0e78fc")
+		change_button_pressed()
+
+func _on_TextureButton_button_down():
+	$PopupBoutonCom/TextureButton.modulate == Color("ffffff")
+	change_button_unpressed()
+
 
 ############################################ Gestion des fonctions annexes ############################################
 
@@ -99,5 +187,4 @@ func popupCarnetSpirale(tab, melange):
 			if (i == 0):
 				$PopupCarnetSpirale/LabelFils.text = $PopupCarnetSpirale/LabelFils.text + "\n"
 	$PopupCarnetSpirale.popup() 
-	print(tab)
 	$Player.get_child(0).speed = 0

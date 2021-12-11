@@ -17,7 +17,6 @@ func _input(event):
 			$Innercircle.visible = true
 			
 		if $A_Button.is_pressed():
-			print("A pressed")
 			var a = InputEventAction.new()
 			a.action = "object_interact"
 			a.pressed = true

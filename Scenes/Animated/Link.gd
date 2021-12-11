@@ -13,7 +13,6 @@ func _ready():
 	$Control/Node2.set_global_position(item2.get_global_position())
 	line.add_point($Control/Node1.get_position()+$Control/Node1.rect_size/2)
 	line.add_point($Control/Node2.get_position()+$Control/Node2.rect_size/2)
-	print(item2)
 
 func get_class():
 	return "Link"

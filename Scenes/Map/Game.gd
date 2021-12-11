@@ -7,8 +7,10 @@ extends Node2D
 var CommandantCree = false
 var rng = RandomNumberGenerator.new()
 remotesync var code_porte = 0
-remotesync var electriciteRepare = true
+remotesync var electriciteRepare = false
 remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
+remotesync var button_com = false
+remotesync var button_elec = false
 var tabmelange = false
 var codeGenere = false
 
@@ -33,7 +35,6 @@ func create_play():
 			get_node("Vaisseau/Player").add_child(player)
 
 func _on_Cockpit_change_code_porte():
-	print("Signal recu")
 	rng.randomize()
 	var code = rng.randi_range(1000, 9999)
 	$Cockpit.popupNotebook(code, codeGenere)
@@ -51,10 +52,8 @@ func _on_Vaisseau_electricite_changed():
 
 remote func changed_electricite():
 	electriciteRepare = true
-	print("Electricité Réparé !")
 
 func _on_Cockpit_change_tab_fils():
-	print(tabmelange)
 	var tab = tabFils
 	if(!tabmelange):
 		randomize()
@@ -69,3 +68,31 @@ remote func set_tab_fils(tab):
 	if(!tabmelange):
 		tabFils = tab
 		tabmelange = true
+
+func _on_Cockpit_button_com_pressed():
+	rpc("button_com_true")
+	button_com_true()
+
+func button_com_true():
+	button_com = true
+
+func _on_Cockpit_button_com_unpressed():
+	rpc("button_com_false")
+	button_com_false()
+
+func button_com_false():
+	button_com = false
+
+func _on_Vaisseau_button_elec_pressed():
+	rpc("button_elec_true")
+	button_elec_true()
+
+func button_elec_true():
+	button_elec = true
+
+func _on_Vaisseau_button_elec_unpressed():
+	rpc("button_elec_false")
+	button_elec_false()
+
+func button_elec_false():
+	button_elec = false
