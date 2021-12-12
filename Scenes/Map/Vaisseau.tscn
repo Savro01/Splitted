@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Assets/Font/Computer-z2aL.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=2]
@@ -46,27 +46,26 @@ extents = Vector2( 32.6392, 28.6919 )
 extents = Vector2( 51.7697, 51.1735 )
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 33.6635, 29.4023 )
+extents = Vector2( 17.2204, 27.8564 )
 
 [sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 33.6635, 29.4023 )
+
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 20.8452, 20.9384 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=14]
 size = 14
 font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=14]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 197, 189 )
 
 [sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 197, 189 )
-modulate_color = Color( 0.435294, 0.584314, 0.870588, 1 )
 
 [sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 197, 189 )
+modulate_color = Color( 0.435294, 0.584314, 0.870588, 1 )
 
 [sub_resource type="StyleBoxTexture" id=17]
 texture = ExtResource( 6 )
@@ -76,7 +75,11 @@ region_rect = Rect2( 0, 0, 197, 189 )
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 197, 189 )
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 197, 189 )
+
+[sub_resource type="DynamicFont" id=20]
 size = 20
 font_data = ExtResource( 1 )
 
@@ -263,6 +266,12 @@ scale = Vector2( 0.1, 0.1 )
 position = Vector2( 786.89, 1046.68 )
 shape = SubResource( 10 )
 
+[node name="ZoneBoutonElec" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneBoutonElec"]
+position = Vector2( 355.538, 630.554 )
+shape = SubResource( 11 )
+
 [node name="Bouclier1" type="TextureRect" parent="."]
 margin_left = 1427.0
 margin_top = 441.0
@@ -278,7 +287,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bouclier1/ZoneBouclier1"]
 position = Vector2( 9.5, 21.5 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="Bouclier2" type="TextureRect" parent="."]
 margin_left = 883.561
@@ -296,7 +305,7 @@ position = Vector2( 0.561157, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bouclier2/ZoneBouclier2"]
 position = Vector2( 20.4737, 11.0243 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="PopupCodePorte" type="Popup" parent="."]
 margin_left = 914.958
@@ -325,7 +334,7 @@ margin_left = 19.0
 margin_top = 16.0
 margin_right = -17.0
 margin_bottom = -16.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 text = "                Porte vérrouiller 
 Entrez  le code de dévérrouillage."
 uppercase = true
@@ -345,12 +354,12 @@ __meta__ = {
 margin_top = 97.0
 margin_right = 240.0
 margin_bottom = 162.0
-custom_styles/hover = SubResource( 14 )
-custom_styles/pressed = SubResource( 15 )
-custom_styles/focus = SubResource( 16 )
-custom_styles/disabled = SubResource( 17 )
-custom_styles/normal = SubResource( 18 )
-custom_fonts/font = SubResource( 19 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/disabled = SubResource( 18 )
+custom_styles/normal = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 text = "Déverrouiller porte"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -531,6 +540,8 @@ __meta__ = {
 [connection signal="body_exited" from="ZoneTuyau3" to="." method="_on_ZoneTuyau3_body_exited"]
 [connection signal="body_entered" from="ZoneBouclier" to="." method="_on_ZoneBouclier_body_entered"]
 [connection signal="body_exited" from="ZoneBouclier" to="." method="_on_ZoneBouclier_body_exited"]
+[connection signal="body_entered" from="ZoneBoutonElec" to="." method="_on_ZoneBoutonElec_body_entered"]
+[connection signal="body_exited" from="ZoneBoutonElec" to="." method="_on_ZoneBoutonElec_body_exited"]
 [connection signal="body_entered" from="Bouclier1/ZoneBouclier1" to="." method="_on_ZoneBouclier1_body_entered"]
 [connection signal="body_exited" from="Bouclier1/ZoneBouclier1" to="." method="_on_ZoneBouclier1_body_exited"]
 [connection signal="body_entered" from="Bouclier2/ZoneBouclier2" to="." method="_on_ZoneBouclier2_body_entered"]

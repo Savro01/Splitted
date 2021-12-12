@@ -73,26 +73,35 @@ func _on_Cockpit_button_com_pressed():
 	rpc("button_com_true")
 	button_com_true()
 
-func button_com_true():
+remote func button_com_true():
 	button_com = true
+	if (button_elec == true):
+		rpc("change_scene_final")
+		change_scene_final()
 
 func _on_Cockpit_button_com_unpressed():
 	rpc("button_com_false")
 	button_com_false()
 
-func button_com_false():
+remote func button_com_false():
 	button_com = false
 
 func _on_Vaisseau_button_elec_pressed():
 	rpc("button_elec_true")
 	button_elec_true()
 
-func button_elec_true():
+remote func button_elec_true():
 	button_elec = true
+	if (button_com == true):
+		rpc("change_scene_final")
+		change_scene_final()
 
 func _on_Vaisseau_button_elec_unpressed():
 	rpc("button_elec_false")
 	button_elec_false()
 
-func button_elec_false():
+remote func button_elec_false():
 	button_elec = false
+
+remote func change_scene_final():
+	get_tree().change_scene("res://Scenes/FinalScene.tscn")

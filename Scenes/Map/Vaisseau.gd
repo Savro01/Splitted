@@ -89,6 +89,16 @@ func _process(delta):
 			if Input.is_action_pressed("ui_cancel"): 
 				$PopupBouclier.hide()
 				$Player.get_child(0).speed = 100
+		"ZoneBoutonElec":
+			if Input.is_action_pressed("object_interact"):
+				if($PopupBoutonElec.visible == false):
+					var v = $Player.get_child(0).get_global_position() - $PopupBoutonElec.get_rect().size/2
+					$PopupBoutonElec.set_global_position(v)
+					$PopupBoutonElec.popup()
+					$Player.get_child(0).speed = 0
+			if Input.is_action_pressed("ui_cancel"): 
+				$PopupBoutonElec.hide()
+				$Player.get_child(0).speed = 100
 
 ############################################ Gestion des portes ############################################
 func _on_Door1_body_entered(body):
@@ -217,8 +227,15 @@ func _on_ZoneBouclier_body_entered(body):
 	if(body is Player):
 		currentArea = "ZoneBouclier"
 
-
 func _on_ZoneBouclier_body_exited(body):
+	if(body is Player):
+		currentArea = null
+
+func _on_ZoneBoutonElec_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneBoutonElec"
+
+func _on_ZoneBoutonElec_body_exited(body):
 	if(body is Player):
 		currentArea = null
 ############################################ Gestion des signaux ############################################
@@ -297,7 +314,6 @@ func _on_TextureRectPoignee_pressed():
 	if(verif_fil()):
 		change_electricite_status()
 	else:
-		#Jouer animation electricité ?
 		for i in range($PopupFils.get_child_count()):
 			if($PopupFils.get_child(i) is Link):
 				$PopupFils.get_child(i).queue_free()

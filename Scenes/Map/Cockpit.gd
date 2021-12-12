@@ -7,26 +7,56 @@ extends Node2D
 var currentArea = null
 var tabMorse = ["D\nA\nL\nE\nK\nS", "S\nO\nN\nT\nA\nR\nI\nE\nN\nS", "C\nY\nB\nE\nR\nM\nE\nN\nS"]
 var boiteNoireDecoder = false
-var shipAlign = true
+var shipAlign = false
+var flechePressed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	tabMorse.shuffle()
+	get_parent().rng.randomize()
+	var pos = get_parent().rng.randi_range(50, 495)
+	$PopupPilotage/Fleche.rect_position.x = pos
+	$PopupPilotage/Line.rect_position.x = pos + 16.5 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (flechePressed):
+		var mouse_pos = get_global_mouse_position().x
+		var pos_arrowX = $PopupPilotage/Fleche.rect_position.x
+		if(pos_arrowX >= 50 and pos_arrowX <= 495):
+			var arrow_pos = $PopupPilotage/Fleche.get_global_position().y
+			var line_pos = $PopupPilotage/Line.get_global_position().y
+			var vect = Vector2(mouse_pos-$PopupPilotage/Fleche.rect_size.x/2, arrow_pos)
+			$PopupPilotage/Fleche.set_global_position(vect)
+			vect = Vector2(mouse_pos-$PopupPilotage/Line.rect_size.x/2, line_pos)
+			$PopupPilotage/Line.set_global_position(vect)
+			if($PopupPilotage/Line.rect_position.x > 285 and $PopupPilotage/Line.rect_position.x < 295):
+				$PopupPilotage/Line.rect_position.x = 291.5
+				$PopupPilotage/Fleche.rect_position.x = 275
+				$PopupPilotage/Line.visible = false
+				$PopupPilotage/LineGood.visible = true
+				flechePressed = false
+				shipAlign = true
+		elif(pos_arrowX > 495):
+			flechePressed = false
+			$PopupPilotage/Fleche.rect_position.x = 494
+			$PopupPilotage/Line.rect_position.x = 510.5
+		elif(pos_arrowX < 50):
+			flechePressed = false
+			$PopupPilotage/Fleche.rect_position.x = 51
+			$PopupPilotage/Line.rect_position.x = 67.5
 	match currentArea:
 		"ZonePilotage":
-			if Input.is_action_pressed("object_interact"):
-				if $Popup.visible == false:
-					var v = $Player.get_position()
-					$Popup.set_position(v)
-					$Popup.show()
-					$Player.speed = 0
+			if Input.is_action_pressed("object_interact") :
+				if($PopupPilotage.visible == false and get_parent().electriciteRepare):
+					var v = $Player.get_child(0).get_global_position() - $PopupPilotage.get_rect().size/2
+					$PopupPilotage.set_global_position(v)
+					$Player.get_child(0).speed = 0
+					$PopupPilotage.popup()
 			if Input.is_action_pressed("ui_cancel"):
-				$Popup.hide()
-				$Player.speed = 100
+				$PopupPilotage.hide()
+				$Player.get_child(0).speed = 100
 		"ZoneCarnet":
 			if Input.is_action_pressed("object_interact"):
 				if($PopupCarnetSpirale.visible == false):
@@ -36,7 +66,7 @@ func _process(delta):
 					change_tab_fils()
 			if Input.is_action_pressed("ui_cancel"):
 				$PopupCarnetSpirale.hide()
-				$Player.get_child(0).speed = 100			
+				$Player.get_child(0).speed = 100
 		"ZoneLivre":
 			if Input.is_action_pressed("object_interact"):
 				if($PopupCarnetSpirale.visible == false):
@@ -171,6 +201,12 @@ func _on_TextureButton_button_down():
 	$PopupBoutonCom/TextureButton.modulate == Color("ffffff")
 	change_button_unpressed()
 
+func _on_Fleche_button_down():
+	if(shipAlign == false):
+		flechePressed = true
+
+func _on_Fleche_button_up():
+	flechePressed = false
 
 ############################################ Gestion des fonctions annexes ############################################
 
