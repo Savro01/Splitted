@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/BetterDrag/FolderDrop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/BetterDrag/TransfertFiles.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/BetterDrag/FileDrag.tscn" type="PackedScene" id=3]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 236.736, 181.611 )
+script = ExtResource( 2 )
+
+[node name="file" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4.75684, 2.97304 )
+
+[node name="mainFolder" parent="." groups=[
+"source",
+] instance=ExtResource( 1 )]
+position = Vector2( 25.2305, 50.85 )
+
+[node name="folder1" parent="." groups=[
+"dest",
+] instance=ExtResource( 1 )]
+position = Vector2( 253.926, 59.1169 )
+
+[node name="folder2" parent="." groups=[
+"dest",
+] instance=ExtResource( 1 )]
+position = Vector2( 253.591, 2.97304 )
+
+[node name="folder3" parent="." groups=[
+"dest",
+] instance=ExtResource( 1 )]
+position = Vector2( 256.721, 113.35 )
+
+[node name="folder4" parent="." groups=[
+"dest",
+] instance=ExtResource( 1 )]
+position = Vector2( 344.426, 59.1169 )
+
+[node name="folder5" parent="." groups=[
+"dest",
+] instance=ExtResource( 1 )]
+position = Vector2( 344.091, 2.97304 )
+
+[node name="folder6" parent="." groups=[
+"dest",
+] instance=ExtResource( 1 )]
+position = Vector2( 347.221, 113.35 )
+
+[node name="bin" parent="." groups=[
+"bin",
+"dest",
+] instance=ExtResource( 1 )]
+position = Vector2( 131.974, 174 )
+
+[node name="msg" type="Label" parent="."]
+margin_left = -65.4065
+margin_top = -114.164
+margin_right = 53.5935
+margin_bottom = -100.164
+rect_scale = Vector2( 4, 4 )
+text = "TRANSFERT FAILED"
+__meta__ = {
+"_edit_use_anchors_": false
+}
