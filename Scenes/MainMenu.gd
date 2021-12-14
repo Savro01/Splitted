@@ -8,7 +8,7 @@ extends Control
 #signal set_connect_type
 
 func updateFullScreenBtn():
-	if(!OS.window_fullscreen):
+	if(OS.window_fullscreen):
 		$OptionsContainer/Fullscreen.text = "Windowed"
 	else:
 		$OptionsContainer/Fullscreen.text = "Fullscreen"
