@@ -122,7 +122,6 @@ func _process(delta):
 				if($PopupFilePhone.visible == false):
 					var v = $Player.get_child(0).get_global_position() - $PopupFilePhone.get_rect().size/2
 					$PopupFilePhone.set_global_position(v)
-					print("File Transfert Changing ...")
 					change_file_transfert()
 			if Input.is_action_pressed("ui_cancel"): 
 				$PopupFilePhone.hide()
@@ -433,7 +432,6 @@ func popupColorPicker(tab, colorGenere):
 	if(!colorGenere):
 		$PopupFilePhone/ColorPicker.animation = tab[0]
 		$PopupFilePhone/ColorPicker.play()
-		print("Popup playing animation")
 	$Player.get_child(0).speed = 0
 	$PopupFilePhone.popup()
 		

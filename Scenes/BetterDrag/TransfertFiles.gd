@@ -29,7 +29,6 @@ func resetAll():
 	folders = get_tree().get_nodes_in_group("dest")
 	
 	for f in folders:
-		print("vide")
 		f.setEmpty(true)
 		
 	$file.show()
@@ -78,7 +77,6 @@ func _physics_process(delta):
 		$file.hide()
 		var correct = true
 		for i in range(0, filled_folders.size()):
-			print(get_parent())
 			if filled_folders[i] != get_parent().get_parent().get_parent().order[i]:
 				correct = false
 				

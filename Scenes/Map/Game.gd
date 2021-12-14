@@ -7,7 +7,7 @@ extends Node2D
 var CommandantCree = false
 var rng = RandomNumberGenerator.new()
 remotesync var code_porte = 0
-remotesync var electriciteRepare = true
+remotesync var electriciteRepare = false
 
 remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
 remotesync var colorPick = ["bleu", "rouge", "vert", "jaune", "orange"]
@@ -82,10 +82,8 @@ remote func set_tab_fils(tab):
 func _on_Vaisseau_file_transfert_changed():
 	var tab = colorPick
 	if(!colorGenere):
-		print("Color pas generée")
 		randomize()
 		tab.shuffle()
-		print(tab)
 		$Vaisseau.popupColorPicker(tab, colorGenere)
 		rpc("set_tab_colorPick", tab)
 		set_tab_colorPick(tab)
