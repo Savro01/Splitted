@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Assets/Font/Computer-z2aL.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=2]
@@ -34,42 +34,41 @@ extents = Vector2( 16.4258, 40.3005 )
 extents = Vector2( 16.0622, 40.1569 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 30.3387, 34.4583 )
+extents = Vector2( 15.6643, 24.6025 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 32.3179, 34.8721 )
+extents = Vector2( 30.3387, 34.4583 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 32.6392, 28.6919 )
+extents = Vector2( 32.3179, 34.8721 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 51.7697, 51.1735 )
+extents = Vector2( 32.6392, 28.6919 )
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 17.2204, 27.8564 )
+extents = Vector2( 51.7697, 51.1735 )
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 33.6635, 29.4023 )
+extents = Vector2( 17.2204, 27.8564 )
 
 [sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 33.6635, 29.4023 )
+
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 20.8452, 20.9384 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=15]
 size = 14
 font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=15]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 197, 189 )
 
 [sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 197, 189 )
-modulate_color = Color( 0.435294, 0.584314, 0.870588, 1 )
 
 [sub_resource type="StyleBoxTexture" id=17]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 197, 189 )
+modulate_color = Color( 0.435294, 0.584314, 0.870588, 1 )
 
 [sub_resource type="StyleBoxTexture" id=18]
 texture = ExtResource( 6 )
@@ -79,7 +78,11 @@ region_rect = Rect2( 0, 0, 197, 189 )
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 197, 189 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 197, 189 )
+
+[sub_resource type="DynamicFont" id=21]
 size = 20
 font_data = ExtResource( 1 )
 
@@ -169,7 +172,7 @@ position = Vector2( 914.958, 951.262 )
 tile_set = ExtResource( 5 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -786422, 2, 196611 )
+tile_data = PoolIntArray( -1310736, 2, 262146, -786422, 2, 196611 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 914.958, 951.262 )
@@ -214,24 +217,31 @@ shape = SubResource( 6 )
 [node name="Player" type="Node2D" parent="."]
 position = Vector2( 1444.26, 1254.51 )
 
+[node name="ZoneFile" type="Area2D" parent="."]
+position = Vector2( 914.958, 951.262 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneFile"]
+position = Vector2( -495.1, -632.722 )
+shape = SubResource( 7 )
+
 [node name="ZoneDisjoncteur" type="Area2D" parent="."]
 position = Vector2( 914.958, 951.262 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneDisjoncteur"]
 position = Vector2( 704.345, -63.5484 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="ZoneColle" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneColle"]
 position = Vector2( 1251.9, 584.954 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="ZoneTuyau1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneTuyau1"]
 position = Vector2( 963.461, 648.763 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Gaz1" parent="ZoneTuyau1" instance=ExtResource( 8 )]
 position = Vector2( 984.492, 669.601 )
@@ -242,7 +252,7 @@ scale = Vector2( 0.1, 0.1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneTuyau2"]
 position = Vector2( 1155.27, 1159.22 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Gaz2" parent="ZoneTuyau2" instance=ExtResource( 8 )]
 position = Vector2( 1133.6, 1176.98 )
@@ -253,7 +263,7 @@ scale = Vector2( 0.1, 0.1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneTuyau3"]
 position = Vector2( 674.186, 1059.82 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Gaz3" parent="ZoneTuyau3" instance=ExtResource( 8 )]
 position = Vector2( 648.854, 1039.15 )
@@ -264,13 +274,13 @@ scale = Vector2( 0.1, 0.1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneBouclier"]
 position = Vector2( 786.89, 1046.68 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="ZoneBoutonElec" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneBoutonElec"]
 position = Vector2( 355.538, 630.554 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="Bouclier1" type="TextureRect" parent="."]
 margin_left = 1427.0
@@ -287,7 +297,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bouclier1/ZoneBouclier1"]
 position = Vector2( 9.5, 21.5 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="Bouclier2" type="TextureRect" parent="."]
 margin_left = 883.561
@@ -305,7 +315,7 @@ position = Vector2( 0.561157, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bouclier2/ZoneBouclier2"]
 position = Vector2( 20.4737, 11.0243 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="PopupCodePorte" type="Popup" parent="."]
 margin_left = 914.958
@@ -334,7 +344,7 @@ margin_left = 19.0
 margin_top = 16.0
 margin_right = -17.0
 margin_bottom = -16.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "                Porte vérrouiller 
 Entrez  le code de dévérrouillage."
 uppercase = true
@@ -354,12 +364,12 @@ __meta__ = {
 margin_top = 97.0
 margin_right = 240.0
 margin_bottom = 162.0
-custom_styles/hover = SubResource( 15 )
-custom_styles/pressed = SubResource( 16 )
-custom_styles/focus = SubResource( 17 )
-custom_styles/disabled = SubResource( 18 )
-custom_styles/normal = SubResource( 19 )
-custom_fonts/font = SubResource( 20 )
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/focus = SubResource( 18 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/normal = SubResource( 20 )
+custom_fonts/font = SubResource( 21 )
 text = "Déverrouiller porte"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -528,6 +538,8 @@ __meta__ = {
 [connection signal="body_exited" from="Node2D/Door5" to="." method="_on_Door5_body_exited"]
 [connection signal="body_entered" from="Node2D/Door6" to="." method="_on_Door6_body_entered"]
 [connection signal="body_exited" from="Node2D/Door6" to="." method="_on_Door6_body_exited"]
+[connection signal="body_entered" from="ZoneFile" to="." method="_on_ZoneFile_body_entered"]
+[connection signal="body_exited" from="ZoneFile" to="." method="_on_ZoneFile_body_exited"]
 [connection signal="body_entered" from="ZoneDisjoncteur" to="." method="_on_ZoneDisjoncteur_body_entered"]
 [connection signal="body_exited" from="ZoneDisjoncteur" to="." method="_on_ZoneDisjoncteur_body_exited"]
 [connection signal="body_entered" from="ZoneColle" to="." method="_on_ZoneColle_body_entered"]

@@ -111,6 +111,9 @@ func _process(delta):
 			if Input.is_action_pressed("ui_cancel"): 
 				$PopupBoutonElec.hide()
 				$Player.get_child(0).speed = 100
+		"ZoneFile":
+			if Input.is_action_pressed("object_interact"):
+				if($PopupBoutonElec.visible == false):
 
 ############################################ Gestion des portes ############################################
 func _on_Door1_body_entered(body):
@@ -250,6 +253,16 @@ func _on_ZoneBoutonElec_body_entered(body):
 func _on_ZoneBoutonElec_body_exited(body):
 	if(body is Player):
 		currentArea = null
+		
+func _on_ZoneFile_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneFile"
+
+func _on_ZoneFile_body_exited(body):
+	if(body is Player):
+		currentArea = null
+		
+		
 ############################################ Gestion des signaux ############################################
 
 signal electricite_changed
@@ -373,3 +386,6 @@ func _on_TextureButton_button_down():
 func _on_TextureButton_button_up():
 	$PopupBoutonElec/TextureButton.modulate == Color("ffffff")
 	change_button_unpressed()
+
+
+

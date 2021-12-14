@@ -9,6 +9,8 @@ var rng = RandomNumberGenerator.new()
 remotesync var code_porte = 0
 remotesync var electriciteRepare = false
 remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
+# rouge - orange - jaune - vert - rose - bleu
+remotesync var colorOrder = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
 remotesync var button_com = false
 remotesync var button_elec = false
 var tabmelange = false

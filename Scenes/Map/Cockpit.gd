@@ -98,7 +98,21 @@ func _process(delta):
 			if Input.is_action_pressed("ui_cancel"):
 				$PopupBoutonCom.hide()
 				$Player.get_child(0).speed = 100
-
+		"ZoneServerFile":
+			if Input.is_action_pressed("object_interact"):
+				if($PopupServerFile.visible == false):
+					
+					
+					var v = $Player.get_child(0).get_global_position() - $PopupServerFile.get_rect().size/2
+					$PopupServerFile.set_global_position(v)
+					$Player.get_child(0).speed = 0
+					$PopupServerFile.popup()
+			if Input.is_action_pressed("ui_cancel"):
+				$PopupServerFile.hide()
+				$Player.get_child(0).speed = 100
+				
+				
+				
 ############################################ Gestion des Zones ############################################
 # Body Entered
 
@@ -121,6 +135,10 @@ func _on_ZoneBoiteNoire_body_entered(body):
 func _on_ZoneBouton_body_entered(body):
 	if(body is Player):
 		currentArea = "ZoneBouton"
+		
+func _on_ZoneServerFile_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneServerFile"
 
 # Body Exited
 
@@ -147,6 +165,11 @@ func _on_ZoneCodeMorse_body_exited(body):
 func _on_ZoneBouton_body_exited(body):
 	if(body is Player):
 		currentArea = null
+		
+func _on_ZoneServerFile_body_exited(body):
+	if(body is Player):
+		currentArea = null
+
 
 ############################################ Gestion des signaux ############################################
 
@@ -224,3 +247,4 @@ func popupCarnetSpirale(tab, melange):
 				$PopupCarnetSpirale/LabelFils.text = $PopupCarnetSpirale/LabelFils.text + "\n"
 	$PopupCarnetSpirale.popup() 
 	$Player.get_child(0).speed = 0
+

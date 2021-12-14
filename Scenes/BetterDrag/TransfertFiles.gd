@@ -15,7 +15,30 @@ var filled_folders = []
 # rouge - orange - jaune - vert - rose - bleu
 var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
 	
-################################# Logic functions ######################
+func resetAll():
+	$msg.hide()
+	
+	# reset files
+	$bin.setEmpty(true)
+	$bin.setToBin()
+	main_pos = $mainFolder.transform.origin
+	dest_pos = main_pos
+	
+	folders = get_tree().get_nodes_in_group("dest")
+	
+	for f in folders:
+		print("vide")
+		f.setEmpty(true)
+		
+	$file.show()
+	
+	filled_folders = []
+	
+	
+
+	
+############################
+##### Logic functions ######################
  
 ## si le fichier est dans le dossier -> change le sprite du dossier
 func isOnFolder(file, folder):
@@ -33,7 +56,7 @@ func _ready():
 	## dossier source
 	main_pos = $mainFolder.transform.origin
 	dest_pos = main_pos
-	
+	$file.show()
 	# tableau des dossier destination
 	folders = get_tree().get_nodes_in_group("dest")
 	
@@ -56,6 +79,12 @@ func _physics_process(delta):
 				
 		if not correct:
 			$msg.show()
+			var t = Timer.new()
+			t.set_wait_time(1)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			resetAll()
 		else:
 			$msg.text = "TRANSFERT SUCCEED"
 			$msg.show()
@@ -105,3 +134,7 @@ func near_folder():
 				if not selectedFolder.is_in_group("bin"):
 					filled_folders.append(selectedFolder.color.to_html(false))
 					folders.erase(selectedFolder) 		# on supprime le dossier de la liste -> non draggable
+
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	pass
