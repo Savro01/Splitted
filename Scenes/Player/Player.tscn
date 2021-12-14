@@ -145,10 +145,12 @@ smoothing_enabled = true
 smoothing_speed = 10.0
 
 [node name="Parametres" type="TextureButton" parent="."]
-margin_left = 755.5
-margin_top = 8.7735
-margin_right = 2675.5
-margin_bottom = 1928.77
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 347.102
+margin_top = -222.244
+margin_right = 2267.1
+margin_bottom = 1697.76
 rect_scale = Vector2( 0.025, 0.025 )
 texture_normal = ExtResource( 5 )
 __meta__ = {
@@ -156,10 +158,12 @@ __meta__ = {
 }
 
 [node name="Taches" type="TextureButton" parent="."]
-margin_left = 693.0
-margin_top = 8.0
-margin_right = 885.0
-margin_bottom = 200.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 283.957
+margin_top = -223.743
+margin_right = 475.957
+margin_bottom = -31.7427
 rect_scale = Vector2( 0.26, 0.26 )
 texture_normal = ExtResource( 6 )
 __meta__ = {
