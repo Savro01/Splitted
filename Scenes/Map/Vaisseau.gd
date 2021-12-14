@@ -61,7 +61,7 @@ func _process(delta):
 					$ZoneTuyau1/Gaz1.queue_free()
 				currentArea = null
 		"ZoneTuyau2":
-			if Input.is_action_pressed("object_interact"):
+			if Input.is_action_pressed("object_interact") and colleObtenu:
 				if($Player.get_child(0).isAndroid):
 					$Player.get_child(0).get_child(4).set_b_pressed()
 				tuyau2repare = true
@@ -69,7 +69,7 @@ func _process(delta):
 					$ZoneTuyau2/Gaz2.queue_free()
 				currentArea = null
 		"ZoneTuyau3":
-			if Input.is_action_pressed("object_interact"):
+			if Input.is_action_pressed("object_interact") and colleObtenu:
 				if($Player.get_child(0).isAndroid):
 					$Player.get_child(0).get_child(4).set_b_pressed()
 				tuyau3repare = true
