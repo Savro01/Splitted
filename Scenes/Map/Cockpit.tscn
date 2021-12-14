@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Tileset/chests.tres" type="TileSet" id=2]
 [ext_resource path="res://Assets/Tileset/icons.tres" type="TileSet" id=3]
 [ext_resource path="res://Assets/Tileset/decoration.tres" type="TileSet" id=4]
+[ext_resource path="res://Assets/Images/buttonFinalPressed.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Font/GreatVibes-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Map/Cockpit.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Images/Notebook.png" type="Texture" id=8]
@@ -379,7 +380,7 @@ margin_bottom = 380.0
 margin_right = 380.0
 margin_bottom = 380.0
 texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 14 )
+texture_pressed = ExtResource( 5 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false

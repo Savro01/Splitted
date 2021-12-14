@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Assets/Font/Computer-z2aL.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Tileset/Sol_Vaisseau.tres" type="TileSet" id=2]
@@ -50,6 +50,7 @@
 [ext_resource path="res://Assets/Images/gifs/RougeOJVRoB/frame_6_delay-0.2s.png" type="Texture" id=48]
 [ext_resource path="res://Assets/Images/gifs/OrangeRVJBR/frame_6_delay-0.2s.png" type="Texture" id=49]
 [ext_resource path="res://Assets/Images/gifs/OrangeRVJBR/frame_0_delay-0.1s.png" type="Texture" id=50]
+[ext_resource path="res://Assets/Images/buttonFinalPressed.png" type="Texture" id=51]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 41.1456, 15.6616 )
@@ -139,14 +140,14 @@ animations = [ {
 "name": "bleu",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 30 ), ExtResource( 16 ), ExtResource( 33 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "vert",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 26 ), ExtResource( 41 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 38 ), ExtResource( 45 ) ],
 "loop": true,
 "name": "rose",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 16 ), ExtResource( 33 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "vert",
 "speed": 5.0
 } ]
 
@@ -611,7 +612,7 @@ __meta__ = {
 margin_right = 380.0
 margin_bottom = 380.0
 texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 14 )
+texture_pressed = ExtResource( 51 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false

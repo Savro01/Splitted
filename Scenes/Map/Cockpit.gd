@@ -10,6 +10,7 @@ var boiteNoireDecoder = false
 var shipAlign = false
 var flechePressed = false
 var transfert_win = false
+#var imageButtonFinal = preload("res://Assets/Images/")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -224,11 +225,9 @@ func _on_Button_pressed():
 
 func _on_TextureButton_button_up():
 	if(boiteNoireDecoder and shipAlign and transfert_win):
-		$PopupBoutonCom/TextureButton.modulate == Color("0e78fc")
 		change_button_pressed()
 
 func _on_TextureButton_button_down():
-	$PopupBoutonCom/TextureButton.modulate == Color("ffffff")
 	change_button_unpressed()
 
 func _on_Fleche_button_down():
