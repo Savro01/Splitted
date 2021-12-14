@@ -8,11 +8,10 @@ var CommandantCree = false
 var rng = RandomNumberGenerator.new()
 remotesync var code_porte = 0
 remotesync var electriciteRepare = true
-remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
 
+remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
 remotesync var colorPick = ["bleu", "rouge", "vert", "jaune", "orange"]
-# rouge - orange - jaune - vert - rose - bleu
-remotesync var colorOrder = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
+
 remotesync var button_com = false
 remotesync var button_elec = false
 var tabmelange = false
@@ -79,20 +78,23 @@ remote func set_tab_fils(tab):
 		
 ############# File Transert
 
-func _on_Vaisseau_change_tab_colorPick():
+func _on_Vaisseau_file_transfert_changed():
 	var tab = colorPick
 	if(!colorGenere):
+		print("Color pas generée")
 		randomize()
 		tab.shuffle()
-		$Vaisseau/PopupFilePhone/ColorPicker.popupColorPicker(tab, colorGenere)
+		print(tab)
+		$Vaisseau.popupColorPicker(tab, colorGenere)
 		rpc("set_tab_colorPick", tab)
 		set_tab_colorPick(tab)
 	else:
-		$Vaisseau/PopupFilePhone/ColorPicker.popupColorPicker(tab, colorGenere)
+		$Vaisseau.popupColorPicker(tab, colorGenere)
 
 remote func set_tab_colorPick(tab):
 	if(!codeGenere):
-		colorOrder = tab
+		colorPick = tab
+		$Cockpit/PopupServerFile/Transfert.setOrder()
 		colorGenere = true
 
 
@@ -132,3 +134,6 @@ remote func button_elec_false():
 
 remote func change_scene_final():
 	get_tree().change_scene("res://Scenes/FinalScene.tscn")
+
+
+

@@ -68,10 +68,10 @@ position = Vector2( 347.221, 113.35 )
 position = Vector2( 131.974, 174 )
 
 [node name="msg" type="Label" parent="."]
-margin_left = -55.3951
-margin_top = -83.4627
-margin_right = 63.6049
-margin_bottom = -69.4627
+margin_left = -72.395
+margin_top = -83.463
+margin_right = 58.605
+margin_bottom = -69.463
 rect_scale = Vector2( 4, 4 )
 text = "TRANSFERT FAILED"
 __meta__ = {

@@ -116,9 +116,8 @@ func _process(delta):
 				if($PopupFilePhone.visible == false):
 					var v = $Player.get_child(0).get_global_position() - $PopupFilePhone.get_rect().size/2
 					$PopupFilePhone.set_global_position(v)
-					$PopupFilePhone.popup()
-					$PopupFilePhone/ColorPicker.play()
-					$Player.get_child(0).speed = 0
+					print("File Transfert Changing ...")
+					change_file_transfert()
 				if Input.is_action_pressed("ui_cancel"): 
 					$PopupFilePhone.hide()
 					$PopupFilePhone/ColorPicker.stop()
@@ -286,6 +285,11 @@ signal button_elec_unpressed
 func change_button_unpressed():
 	emit_signal("button_elec_unpressed")
 
+signal file_transfert_changed
+func change_file_transfert():
+	emit_signal("file_transfert_changed")
+
+
 ############################################ Gestion des tâches ############################################
 
 #Ouverture porte
@@ -404,17 +408,7 @@ func _on_TextureButton_button_up():
 # 			  rouge -   orange -  jaune -    vert -     rose -    bleu
 var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
 
-func get_tab_ColorPicker(animation):
-	if(animation == "bleu"):
-		return ["333ed4", "a0d636", "eede04", "f76915", "fd0100", "f79cee"]
-	if(animation == "rose"):
-		return ["f79cee", "a0d636", "eede04", "f76915", "fd0100", "333ed4"]
-	if(animation == "rouge"):
-		return ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
-	if(animation == "orange"):
-		return ["f76915", "f79cee", "a0d636", "eede04", "333ed4", "fd0100"]
-	if(animation == "vert"):
-		return ["a0d636", "f76915", "f79cee", "333ed4", "fd0100", "eede04"]
+
 		
 func get_anim_ColorPicker(firstColor):
 	if(firstColor == "333ed4"):
@@ -430,6 +424,11 @@ func get_anim_ColorPicker(firstColor):
 		
 		
 func popupColorPicker(tab, colorGenere):
-	if(colorGenere):
-		var anim = get_anim_ColorPicker(tab[0])
-		$PopupFilePhone/ColorPicker.animation = anim
+	if(!colorGenere):
+		$PopupFilePhone/ColorPicker.animation = tab[0]
+		$PopupFilePhone/ColorPicker.play()
+		print("Popup playing animation")
+	$Player.get_child(0).speed = 0
+	$PopupFilePhone.popup()
+		
+		

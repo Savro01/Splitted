@@ -14,7 +14,27 @@ var filled_folders = []
 # ordre a respecter : 
 # rouge - orange - jaune - vert - rose - bleu
 var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
+
+
+func setOrder():
+	var tab = get_parent().get_parent().get_parent().colorPick
 	
+	var value = tab[0]
+	var newOrder = order
+	
+	if(value == "bleu"):
+		newOrder =  ["333ed4", "a0d636", "eede04", "f76915", "fd0100", "f79cee"]
+	if(value == "rose"):
+		newOrder = ["f79cee", "a0d636", "eede04", "f76915", "fd0100", "333ed4"]
+	if(value == "rouge"):
+		newOrder =  ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
+	if(value == "orange"):
+		newOrder =  ["f76915", "f79cee", "a0d636", "eede04", "333ed4", "fd0100"]
+	if(value == "vert"):
+		newOrder = ["a0d636", "f76915", "f79cee", "333ed4", "fd0100", "eede04"]
+	
+	order = newOrder
+
 func resetAll():
 	$msg.hide()
 	
