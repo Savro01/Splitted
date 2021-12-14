@@ -381,6 +381,21 @@ func get_string_fil(texture):
 		return "Jaune"
 	if(texture == $PopupFils/RedRight):
 		return "Rouge"
+		
+# 			  rouge -   orange -  jaune -    vert -     rose -    bleu
+var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
+
+func get_tab_ColorPicker(animation):
+	if(animation == "bleu"):
+		return ["333ed4", "a0d636", "eede04", "f76915", "fd0100", "f79cee"]
+	if(animation == "rose"):
+		return ["f79cee", "a0d636", "eede04", "f76915", "fd0100", "333ed4"]
+	if(animation == "rouge"):
+		return ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
+	if(animation == "orange"):
+		return ["f76915", "f79cee", "a0d636", "eede04", "333ed4", "fd0100"]
+	if(animation == "vert"):
+		return ["a0d636", "f76915", "f79cee", "333ed4", "fd0100", "eede04"]
 
 func _on_bouclier_bouclierLock():
 	nb_bouclier_lock += 1
