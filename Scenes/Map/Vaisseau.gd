@@ -113,7 +113,16 @@ func _process(delta):
 				$Player.get_child(0).speed = 100
 		"ZoneFile":
 			if Input.is_action_pressed("object_interact"):
-				if($PopupBoutonElec.visible == false):
+				if($PopupFilePhone.visible == false):
+					var v = $Player.get_child(0).get_global_position() - $PopupFilePhone.get_rect().size/2
+					$PopupFilePhone.set_global_position(v)
+					$PopupFilePhone.popup()
+					$PopupFilePhone/ColorPicker.play()
+					$Player.get_child(0).speed = 0
+				if Input.is_action_pressed("ui_cancel"): 
+					$PopupFilePhone.hide()
+					$PopupFilePhone/ColorPicker.stop()
+					$Player.get_child(0).speed = 100
 
 ############################################ Gestion des portes ############################################
 func _on_Door1_body_entered(body):
