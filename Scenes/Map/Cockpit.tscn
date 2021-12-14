@@ -459,3 +459,4 @@ __meta__ = {
 [connection signal="button_up" from="PopupBoutonCom/TextureButton" to="." method="_on_TextureButton_button_up"]
 [connection signal="button_down" from="PopupPilotage/Fleche" to="." method="_on_Fleche_button_down"]
 [connection signal="button_up" from="PopupPilotage/Fleche" to="." method="_on_Fleche_button_up"]
+[connection signal="win_transfert" from="PopupServerFile/Transfert" to="." method="_on_Transfert_win_transfert"]

@@ -11,6 +11,8 @@ var code = []
 	
 var filled_folders = []
 
+
+
 # ordre a respecter : 
 # rouge - orange - jaune - vert - rose - bleu
 var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
@@ -88,6 +90,8 @@ func _ready():
 			folders[f].setColor(Color(colors[f]))
 		
 		
+signal win_transfert
+		
 func _physics_process(delta):
 	if folders.size() <= 1:
 		$mainFolder.setEmpty(true)
@@ -108,6 +112,7 @@ func _physics_process(delta):
 		else:
 			$msg.text = "TRANSFERT SUCCEED"
 			$msg.show()
+			emit_signal("win_transert")
 	else:
 		# on modifie la position du fichier en fonction des dossiers vides
 		# et de la position de la souris

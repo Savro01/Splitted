@@ -9,6 +9,7 @@ var tabMorse = ["D\nA\nL\nE\nK\nS", "S\nO\nN\nT\nA\nR\nI\nE\nN\nS", "C\nY\nB\nE\
 var boiteNoireDecoder = false
 var shipAlign = false
 var flechePressed = false
+var transfert_win = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +22,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if (flechePressed):
 		var mouse_pos = get_global_mouse_position().x
 		var pos_arrowX = $PopupPilotage/Fleche.rect_position.x
@@ -46,6 +48,8 @@ func _process(delta):
 			flechePressed = false
 			$PopupPilotage/Fleche.rect_position.x = 51
 			$PopupPilotage/Line.rect_position.x = 67.5
+			
+			
 	match currentArea:
 		"ZonePilotage":
 			if Input.is_action_pressed("object_interact") :
@@ -100,9 +104,7 @@ func _process(delta):
 				$Player.get_child(0).speed = 100
 		"ZoneServerFile":
 			if Input.is_action_pressed("object_interact"):
-				if($PopupServerFile.visible == false):
-					
-					
+				if($PopupServerFile.visible == false and !get_parent().electriciteRepare):
 					var v = $Player.get_child(0).get_global_position() - $PopupServerFile.get_rect().size/2
 					$PopupServerFile.set_global_position(v)
 					$Player.get_child(0).speed = 0
@@ -189,6 +191,11 @@ signal button_com_unpressed
 func change_button_unpressed():
 	emit_signal("button_com_unpressed")
 	
+# file transfert signal
+	
+func _on_Transfert_win_transfert():
+	transfert_win = true
+	
 ############################################ Gestion des tâches ############################################
 
 func _on_Button_pressed():
@@ -216,7 +223,7 @@ func _on_Button_pressed():
 			$PopupBoiteNoire/Panel2/LineEdit.text = ""
 
 func _on_TextureButton_button_up():
-	if(boiteNoireDecoder and shipAlign):
+	if(boiteNoireDecoder and shipAlign and transfert_win):
 		$PopupBoutonCom/TextureButton.modulate == Color("0e78fc")
 		change_button_pressed()
 
@@ -247,4 +254,7 @@ func popupCarnetSpirale(tab, melange):
 				$PopupCarnetSpirale/LabelFils.text = $PopupCarnetSpirale/LabelFils.text + "\n"
 	$PopupCarnetSpirale.popup() 
 	$Player.get_child(0).speed = 0
+
+
+
 
