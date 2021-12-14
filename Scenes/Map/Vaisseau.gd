@@ -46,42 +46,48 @@ func _process(delta):
 				$Player.get_child(0).speed = 100
 		"ZoneColle":
 			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(4).set_b_pressed()
 				colleObtenu = true
 				if(has_node("TileMapColle")):
 					$TileMapColle.queue_free()
 				currentArea = null
 		"ZoneTuyau1":
 			if Input.is_action_pressed("object_interact") and colleObtenu:
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(4).set_b_pressed()
 				tuyau1repare = true
 				if(has_node("ZoneTuyau1/Gaz1")):
 					$ZoneTuyau1/Gaz1.queue_free()
 				currentArea = null
 		"ZoneTuyau2":
 			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(4).set_b_pressed()
 				tuyau2repare = true
 				if(has_node("ZoneTuyau2/Gaz2")):
 					$ZoneTuyau2/Gaz2.queue_free()
 				currentArea = null
 		"ZoneTuyau3":
 			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(4).set_b_pressed()
 				tuyau3repare = true
 				if(has_node("ZoneTuyau3/Gaz3")):
 					$ZoneTuyau3/Gaz3.queue_free()
 				currentArea = null
 		"ZoneBouclier1":
 			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(4).set_b_pressed()
 				nb_bouclier += 1
 				if(has_node("Bouclier1")):
 					$Bouclier1.queue_free()
 				currentArea = null
 		"ZoneBouclier2":
 			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(4).set_b_pressed()
 				nb_bouclier += 1
 				if(has_node("Bouclier2")):
 					$Bouclier2.queue_free()
@@ -298,7 +304,8 @@ func _on_ButtonEntrerCode_pressed():
 		porteUnlock = true
 		$PopupCodePorte.hide()
 		$Player.get_child(0).speed = 100
-		$Player.get_child(0).get_child(4).set_b_pressed()
+		if($Player.get_child(0).isAndroid):
+			$Player.get_child(0).get_child(4).set_b_pressed()
 		$Door2.tile_set = load("res://Assets/Tileset/door_without_coll.tres")
 		$Door2.visible = false
 	else:
