@@ -9,12 +9,15 @@ var rng = RandomNumberGenerator.new()
 remotesync var code_porte = 0
 remotesync var electriciteRepare = true
 remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
+
+remotesync var colorPick = ["bleu", "rouge", "vert", "jaune", "orange"]
 # rouge - orange - jaune - vert - rose - bleu
 remotesync var colorOrder = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
 remotesync var button_com = false
 remotesync var button_elec = false
 var tabmelange = false
 var codeGenere = false
+var colorGenere = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -54,7 +57,9 @@ func _on_Vaisseau_electricite_changed():
 
 remote func changed_electricite():
 	electriciteRepare = true
-
+	
+############# Electricity Fils 
+	
 func _on_Cockpit_change_tab_fils():
 	var tab = tabFils
 	if(!tabmelange):
@@ -70,6 +75,26 @@ remote func set_tab_fils(tab):
 	if(!tabmelange):
 		tabFils = tab
 		tabmelange = true
+		
+		
+############# File Transert
+
+func _on_Vaisseau_change_tab_colorPick():
+	var tab = colorPick
+	if(!colorGenere):
+		randomize()
+		tab.shuffle()
+		$Vaisseau/PopupFilePhone/ColorPicker.popupColorPicker(tab, colorGenere)
+		rpc("set_tab_colorPick", tab)
+		set_tab_colorPick(tab)
+	else:
+		$Vaisseau/PopupFilePhone/ColorPicker.popupColorPicker(tab, colorGenere)
+
+remote func set_tab_colorPick(tab):
+	if(!codeGenere):
+		colorOrder = tab
+		colorGenere = true
+
 
 func _on_Cockpit_button_com_pressed():
 	rpc("button_com_true")
