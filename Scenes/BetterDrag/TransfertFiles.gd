@@ -10,7 +10,6 @@ var bin # poubelle
 var code = []
 	
 var filled_folders = []
-var game = get_parent().get_parent().get_parent()
 
 
 
@@ -79,7 +78,8 @@ func _physics_process(delta):
 		$file.hide()
 		var correct = true
 		for i in range(0, filled_folders.size()):
-			if filled_folders[i] != game.order[i]:
+			print(get_parent())
+			if filled_folders[i] != get_parent().get_parent().get_parent().order[i]:
 				correct = false
 				
 		if not correct:
