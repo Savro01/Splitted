@@ -99,3 +99,14 @@ func _on_Joystick_use_move_vector(move_vector):
 			$BodyCommandant.set_frame(1)
 			$BodyElectricien.set_frame(1)
 			
+
+signal show_task_list
+signal show_params
+
+
+func _on_Taches_pressed():
+	emit_signal("show_task_list")
+
+
+func _on_Parametres_pressed():
+	emit_signal("show_params")
