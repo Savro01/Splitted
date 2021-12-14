@@ -124,10 +124,9 @@ func _process(delta):
 					$PopupFilePhone.set_global_position(v)
 					print("File Transfert Changing ...")
 					change_file_transfert()
-				if Input.is_action_pressed("ui_cancel"): 
-					$PopupFilePhone.hide()
-					$PopupFilePhone/ColorPicker.stop()
-					$Player.get_child(0).speed = 100
+			if Input.is_action_pressed("ui_cancel"): 
+				$PopupFilePhone.hide()
+				$Player.get_child(0).speed = 100
 
 ############################################ Gestion des portes ############################################
 func _on_Door1_body_entered(body):

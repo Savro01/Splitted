@@ -104,7 +104,7 @@ func _process(delta):
 				$Player.get_child(0).speed = 100
 		"ZoneServerFile":
 			if Input.is_action_pressed("object_interact"):
-				if($PopupServerFile.visible == false and !get_parent().electriciteRepare):
+				if($PopupServerFile.visible == false and get_parent().electriciteRepare):
 					var v = $Player.get_child(0).get_global_position() - $PopupServerFile.get_rect().size/2
 					$PopupServerFile.set_global_position(v)
 					$Player.get_child(0).speed = 0
