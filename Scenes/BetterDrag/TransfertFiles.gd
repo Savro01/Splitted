@@ -93,7 +93,7 @@ func _physics_process(delta):
 		else:
 			$msg.text = "TRANSFERT SUCCEED"
 			$msg.show()
-			emit_signal("win_transert")
+			emit_signal("win_transfert")
 	else:
 		# on modifie la position du fichier en fonction des dossiers vides
 		# et de la position de la souris
