@@ -10,7 +10,7 @@ remotesync var code_porte = 0
 remotesync var electriciteRepare = true
 
 remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
-remotesync var colorPick = ["bleu", "rouge", "vert", "jaune", "orange"]
+remotesync var colorPick = ["bleu", "rouge", "vert", "rose", "orange"]
 remotesync var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
 
 remotesync var button_com = false
