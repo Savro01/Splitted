@@ -601,6 +601,7 @@ position = Vector2( 331.338, 220.049 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 22 )
 animation = "bleu"
+frame = 5
 playing = true
 
 [node name="PopupBoutonElec" type="Popup" parent="."]
