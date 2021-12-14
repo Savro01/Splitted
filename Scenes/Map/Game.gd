@@ -11,6 +11,7 @@ remotesync var electriciteRepare = true
 
 remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
 remotesync var colorPick = ["bleu", "rouge", "vert", "jaune", "orange"]
+remotesync var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
 
 remotesync var button_com = false
 remotesync var button_elec = false
@@ -94,9 +95,8 @@ func _on_Vaisseau_file_transfert_changed():
 remote func set_tab_colorPick(tab):
 	if(!codeGenere):
 		colorPick = tab
-		$Cockpit/PopupServerFile/Transfert.setOrder()
+		rpc("setOrder")
 		colorGenere = true
-
 
 func _on_Cockpit_button_com_pressed():
 	rpc("button_com_true")
@@ -135,5 +135,21 @@ remote func button_elec_false():
 remote func change_scene_final():
 	get_tree().change_scene("res://Scenes/FinalScene.tscn")
 
-
-
+remote func setOrder():
+	var tab = colorPick
+	
+	var value = tab[0]
+	var newOrder = order
+	
+	if(value == "bleu"):
+		newOrder =  ["333ed4", "a0d636", "eede04", "f76915", "fd0100", "f79cee"]
+	if(value == "rose"):
+		newOrder = ["f79cee", "a0d636", "eede04", "f76915", "fd0100", "333ed4"]
+	if(value == "rouge"):
+		newOrder =  ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
+	if(value == "orange"):
+		newOrder =  ["f76915", "f79cee", "a0d636", "eede04", "333ed4", "fd0100"]
+	if(value == "vert"):
+		newOrder = ["a0d636", "f76915", "f79cee", "333ed4", "fd0100", "eede04"]
+	
+	order = newOrder
