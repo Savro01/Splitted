@@ -575,6 +575,7 @@ __meta__ = {
 }
 
 [node name="PopupFilePhone" type="Popup" parent="."]
+visible = true
 margin_right = 677.0
 margin_bottom = 408.0
 __meta__ = {
@@ -600,6 +601,8 @@ position = Vector2( 331.338, 220.049 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 22 )
 animation = "bleu"
+frame = 6
+playing = true
 
 [node name="PopupBoutonElec" type="Popup" parent="."]
 margin_right = 380.0

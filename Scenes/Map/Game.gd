@@ -7,7 +7,7 @@ extends Node2D
 var CommandantCree = false
 var rng = RandomNumberGenerator.new()
 remotesync var code_porte = 0
-remotesync var electriciteRepare = false
+remotesync var electriciteRepare = true
 
 remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
 remotesync var colorPick = ["bleu", "rouge", "vert", "jaune", "orange"]
@@ -135,6 +135,7 @@ remote func change_scene_final():
 
 remote func setOrder():
 	var tab = colorPick
+	print(order)
 	
 	var value = tab[0]
 	var newOrder = order
@@ -150,4 +151,5 @@ remote func setOrder():
 	if(value == "vert"):
 		newOrder = ["a0d636", "f76915", "f79cee", "333ed4", "fd0100", "eede04"]
 	
+	print(newOrder)
 	order = newOrder
