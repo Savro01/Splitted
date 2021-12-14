@@ -100,13 +100,22 @@ func _on_Joystick_use_move_vector(move_vector):
 			$BodyElectricien.set_frame(1)
 			
 
-signal show_task_list
+signal show_task_list_elec
+signal show_task_list_com
 signal show_params
 
-
 func _on_Taches_pressed():
-	emit_signal("show_task_list")
+	if($BodyElectricien.visible == true):
+		popupInstructionElec()
+	else:
+		popupInstructionCom()
 
+func popupInstructionElec():
+#	var v = get_global_position() - $PopupInstructionElec.get_rect().size/2
+#	$PopupInstructionElec.set_global_position(v)
+	$CanvasLayer/PopupInstructionElec.popup()
 
-func _on_Parametres_pressed():
-	emit_signal("show_params")
+func popupInstructionCom():
+#	var v = get_global_position() - $PopupInstructionCom.get_rect().size/2
+#	$PopupInstructionCom.set_global_position(v)
+	$CanvasLayer/PopupInstructionCom.popup()

@@ -41,6 +41,7 @@ func _process(delta):
 				$PopupPilotage/LineGood.visible = true
 				flechePressed = false
 				shipAlign = true
+				$Player.get_child(0).get_child(4).get_child(1).get_child(1).modulate = Color("5cf70e")
 		elif(pos_arrowX > 495):
 			flechePressed = false
 			$PopupPilotage/Fleche.rect_position.x = 494
@@ -196,6 +197,7 @@ func change_button_unpressed():
 	
 func _on_Transfert_win_transfert():
 	transfert_win = true
+	$Player.get_child(0).get_child(4).get_child(1).get_child(3).modulate = Color("5cf70e")
 	
 ############################################ Gestion des tâches ############################################
 
@@ -222,6 +224,8 @@ func _on_Button_pressed():
 			$PopupBoiteNoire/Panel2/LineEdit.text = ""
 		else:
 			$PopupBoiteNoire/Panel2/LineEdit.text = ""
+	if(boiteNoireDecoder):
+		$Player.get_child(0).get_child(4).get_child(1).get_child(2).modulate = Color("5cf70e")
 
 func _on_TextureButton_button_up():
 	if(boiteNoireDecoder and shipAlign and transfert_win):

@@ -7,7 +7,7 @@ extends Node2D
 var CommandantCree = false
 var rng = RandomNumberGenerator.new()
 remotesync var code_porte = 0
-remotesync var electriciteRepare = true
+remotesync var electriciteRepare = false
 
 remotesync var tabFils = ["Bleu", "Rose", "Jaune", "Rouge"]
 remotesync var colorPick = ["bleu", "rouge", "vert", "rose", "orange"]

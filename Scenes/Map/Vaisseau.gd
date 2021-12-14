@@ -47,7 +47,7 @@ func _process(delta):
 		"ZoneColle":
 			if Input.is_action_pressed("object_interact"):
 				if($Player.get_child(0).isAndroid):
-					$Player.get_child(0).get_child(4).set_b_pressed()
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				colleObtenu = true
 				if(has_node("TileMapColle")):
 					$TileMapColle.queue_free()
@@ -55,31 +55,34 @@ func _process(delta):
 		"ZoneTuyau1":
 			if Input.is_action_pressed("object_interact") and colleObtenu:
 				if($Player.get_child(0).isAndroid):
-					$Player.get_child(0).get_child(4).set_b_pressed()
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				tuyau1repare = true
+				$Player.get_child(0).get_child(4).get_child(0).get_child(2).modulate = Color("5cf70e")
 				if(has_node("ZoneTuyau1/Gaz1")):
 					$ZoneTuyau1/Gaz1.queue_free()
 				currentArea = null
 		"ZoneTuyau2":
 			if Input.is_action_pressed("object_interact") and colleObtenu:
 				if($Player.get_child(0).isAndroid):
-					$Player.get_child(0).get_child(4).set_b_pressed()
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				tuyau2repare = true
+				$Player.get_child(0).get_child(4).get_child(0).get_child(3).modulate = Color("5cf70e")
 				if(has_node("ZoneTuyau2/Gaz2")):
 					$ZoneTuyau2/Gaz2.queue_free()
 				currentArea = null
 		"ZoneTuyau3":
 			if Input.is_action_pressed("object_interact") and colleObtenu:
 				if($Player.get_child(0).isAndroid):
-					$Player.get_child(0).get_child(4).set_b_pressed()
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				tuyau3repare = true
+				$Player.get_child(0).get_child(4).get_child(0).get_child(4).modulate = Color("5cf70e")
 				if(has_node("ZoneTuyau3/Gaz3")):
 					$ZoneTuyau3/Gaz3.queue_free()
 				currentArea = null
 		"ZoneBouclier1":
 			if Input.is_action_pressed("object_interact"):
 				if($Player.get_child(0).isAndroid):
-					$Player.get_child(0).get_child(4).set_b_pressed()
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				nb_bouclier += 1
 				if(has_node("Bouclier1")):
 					$Bouclier1.queue_free()
@@ -87,7 +90,7 @@ func _process(delta):
 		"ZoneBouclier2":
 			if Input.is_action_pressed("object_interact"):
 				if($Player.get_child(0).isAndroid):
-					$Player.get_child(0).get_child(4).set_b_pressed()
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				nb_bouclier += 1
 				if(has_node("Bouclier2")):
 					$Bouclier2.queue_free()
@@ -280,7 +283,6 @@ func _on_ZoneFile_body_exited(body):
 signal electricite_changed
 func change_electricite_status():
 	emit_signal("electricite_changed")
-
 signal button_elec_pressed
 func change_button_pressed():
 	emit_signal("button_elec_pressed")
@@ -303,7 +305,7 @@ func _on_ButtonEntrerCode_pressed():
 		$PopupCodePorte.hide()
 		$Player.get_child(0).speed = 100
 		if($Player.get_child(0).isAndroid):
-			$Player.get_child(0).get_child(4).set_b_pressed()
+			$Player.get_child(0).get_child(5).set_b_pressed()
 		$Door2.tile_set = load("res://Assets/Tileset/door_without_coll.tres")
 		$Door2.visible = false
 	else:
@@ -356,6 +358,7 @@ func creation_fil(text_butt):
 func _on_TextureRectPoignee_pressed():
 	$PopupFils/TextureRectPoignee.rect_position.y = 165
 	if(verif_fil()):
+		$Player.get_child(0).get_child(4).get_child(0).get_child(1).modulate = Color("5cf70e")
 		change_electricite_status()
 	else:
 		for i in range($PopupFils.get_child_count()):
@@ -396,6 +399,7 @@ func _on_bouclier_bouclierLock():
 	nb_bouclier_lock += 1
 	if(nb_bouclier_lock >= 2):
 		bouclierRepare = true
+		$Player.get_child(0).get_child(4).get_child(0).get_child(5).modulate = Color("5cf70e")
 
 func _on_TextureButton_button_down():
 	if(tuyau1repare and tuyau2repare and tuyau3repare and bouclierRepare):
@@ -405,16 +409,8 @@ func _on_TextureButton_button_down():
 func _on_TextureButton_button_up():
 	$PopupBoutonElec/TextureButton.modulate == Color("ffffff")
 	change_button_unpressed()
-	
-
 
 ########### File Transfert	
-
-# 			  rouge -   orange -  jaune -    vert -     rose -    bleu
-var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
-
-
-		
 func get_anim_ColorPicker(firstColor):
 	if(firstColor == "333ed4"):
 		return "bleu"
@@ -427,12 +423,9 @@ func get_anim_ColorPicker(firstColor):
 	if(firstColor == "a0d636"):
 		return "vert"
 		
-		
 func popupColorPicker(tab, colorGenere):
 	if(!colorGenere):
 		$PopupFilePhone/ColorPicker.animation = tab[0]
 		$PopupFilePhone/ColorPicker.play()
 	$Player.get_child(0).speed = 0
 	$PopupFilePhone.popup()
-		
-		
