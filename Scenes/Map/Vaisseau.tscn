@@ -135,6 +135,11 @@ animations = [ {
 "name": "bleu",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 27 ), ExtResource( 44 ), ExtResource( 48 ) ],
+"loop": true,
+"name": "rouge",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 24 ), ExtResource( 26 ), ExtResource( 41 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 38 ), ExtResource( 45 ) ],
 "loop": true,
 "name": "rose",
@@ -143,11 +148,6 @@ animations = [ {
 "frames": [ ExtResource( 30 ), ExtResource( 16 ), ExtResource( 33 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "vert",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 27 ), ExtResource( 44 ), ExtResource( 48 ) ],
-"loop": true,
-"name": "rouge",
 "speed": 5.0
 } ]
 
@@ -601,7 +601,7 @@ position = Vector2( 331.338, 220.049 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 22 )
 animation = "bleu"
-frame = 2
+frame = 1
 playing = true
 
 [node name="PopupBoutonElec" type="Popup" parent="."]
