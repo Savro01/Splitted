@@ -119,3 +119,15 @@ func popupInstructionCom():
 #	var v = get_global_position() - $PopupInstructionCom.get_rect().size/2
 #	$PopupInstructionCom.set_global_position(v)
 	$CanvasLayer/PopupInstructionCom.popup()
+
+
+func _on_Params_pressed():
+	$CanvasLayer/PopupParams.popup()
+
+
+func _on_Quitter_pressed():
+	get_tree().quit()
+
+
+func _on_HSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)

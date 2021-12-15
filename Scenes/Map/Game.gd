@@ -38,6 +38,8 @@ func create_play():
 		else:
 			player.get_node("BodyCommandant").visible = false
 			get_node("Vaisseau/Player").add_child(player)
+		$AudioStreamPlayer.play(2)
+
 
 func _on_Cockpit_change_code_porte():
 	rng.randomize()
@@ -91,7 +93,7 @@ func _on_Vaisseau_file_transfert_changed():
 		$Vaisseau.popupColorPicker(tab, colorGenere)
 
 remote func set_tab_colorPick(tab):
-	if(!codeGenere):
+	if(!colorGenere):
 		colorPick = tab
 		rpc("setOrder")
 		colorGenere = true

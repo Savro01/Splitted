@@ -1,12 +1,18 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Assets/Personnage/electricien.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Personnage/commandant.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/HUD/MobileJoystick.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Images/params.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Images/task.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Font/Computer-z2aL.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/Images/popuptask.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Buttons/btn_pressed.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Buttons/btn.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Buttons/btn_hover.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Menu/fonts/OCRAEXT.TTF" type="DynamicFontData" id=12]
+[ext_resource path="res://Assets/Images/back.jpg" type="Texture" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -159,6 +165,25 @@ font_data = ExtResource( 7 )
 [sub_resource type="DynamicFont" id=31]
 size = 20
 font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxLine" id=32]
+color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxTexture" id=33]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 601, 83 )
+
+[sub_resource type="StyleBoxTexture" id=34]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 602, 83 )
+
+[sub_resource type="StyleBoxTexture" id=35]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 612, 83 )
+
+[sub_resource type="DynamicFont" id=36]
+size = 39
+font_data = ExtResource( 12 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -342,9 +367,9 @@ text = "Allumer le réacteur"
 [node name="Taches" type="TextureButton" parent="CanvasLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -78.1287
+margin_left = -132.129
 margin_top = 20.9763
-margin_right = 113.871
+margin_right = 59.8713
 margin_bottom = 212.977
 rect_scale = Vector2( 0.26, 0.26 )
 texture_normal = ExtResource( 6 )
@@ -352,7 +377,101 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PopupParams" type="Popup" parent="CanvasLayer"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -134.5
+margin_top = -200.0
+margin_right = 134.5
+margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PopupParams"]
+margin_left = 5.75256
+margin_top = 45.912
+margin_right = 581.753
+margin_bottom = 702.912
+rect_scale = Vector2( 0.45, 0.45 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PopupParams"]
+margin_left = 21.0
+margin_top = 149.0
+margin_right = 250.0
+margin_bottom = 210.0
+color = Color( 0.219608, 0.443137, 0.701961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PopupParams"]
+margin_left = 35.4915
+margin_top = 183.873
+margin_right = 235.492
+margin_bottom = 199.873
+custom_styles/slider = SubResource( 32 )
+min_value = -50.0
+max_value = 0.0
+value = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quitter" type="Button" parent="CanvasLayer/PopupParams"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -113.251
+margin_top = 25.5
+margin_right = 114.749
+margin_bottom = 74.5
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 33 )
+custom_styles/pressed = SubResource( 34 )
+custom_styles/normal = SubResource( 35 )
+custom_fonts/font = SubResource( 36 )
+text = "Quitter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/PopupParams"]
+margin_left = 35.0
+margin_top = 158.0
+margin_right = 169.0
+margin_bottom = 172.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Params" type="TextureButton" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -72.6304
+margin_top = 20.2271
+margin_right = 1847.37
+margin_bottom = 1940.23
+rect_scale = Vector2( 0.026, 0.026 )
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Joystick" parent="." instance=ExtResource( 4 )]
 
 [connection signal="pressed" from="CanvasLayer/Taches" to="." method="_on_Taches_pressed"]
+[connection signal="value_changed" from="CanvasLayer/PopupParams/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/PopupParams/Quitter" to="." method="_on_Quitter_pressed"]
+[connection signal="pressed" from="CanvasLayer/Params" to="." method="_on_Params_pressed"]
 [connection signal="use_move_vector" from="Joystick" to="." method="_on_Joystick_use_move_vector"]

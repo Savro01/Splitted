@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Map/Cockpit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Vaisseau.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Map/Game.gd" type="Script" id=3]
+[ext_resource path="res://Music/amibent.mp3" type="AudioStream" id=4]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
@@ -12,6 +13,9 @@ position = Vector2( 205.37, 63.0356 )
 
 [node name="Cockpit" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3956.85, -847.256 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="button_elec_pressed" from="Vaisseau" to="." method="_on_Vaisseau_button_elec_pressed"]
 [connection signal="button_elec_unpressed" from="Vaisseau" to="." method="_on_Vaisseau_button_elec_unpressed"]
