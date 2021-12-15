@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/amibent.mp3-aee9bb91928c774362d0f54a87709828.mp3str"
+
+[deps]
+
+source_file="res://Music/amibent.mp3"
+dest_files=[ "res://.import/amibent.mp3-aee9bb91928c774362d0f54a87709828.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
