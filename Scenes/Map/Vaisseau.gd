@@ -46,42 +46,51 @@ func _process(delta):
 				$Player.get_child(0).speed = 100
 		"ZoneColle":
 			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				colleObtenu = true
 				if(has_node("TileMapColle")):
 					$TileMapColle.queue_free()
 				currentArea = null
 		"ZoneTuyau1":
 			if Input.is_action_pressed("object_interact") and colleObtenu:
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				tuyau1repare = true
+				$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheTuyau1").modulate = Color("5cf70e")
 				if(has_node("ZoneTuyau1/Gaz1")):
 					$ZoneTuyau1/Gaz1.queue_free()
 				currentArea = null
 		"ZoneTuyau2":
-			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+			if Input.is_action_pressed("object_interact") and colleObtenu:
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				tuyau2repare = true
+				$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheTuyau2").modulate = Color("5cf70e")
 				if(has_node("ZoneTuyau2/Gaz2")):
 					$ZoneTuyau2/Gaz2.queue_free()
 				currentArea = null
 		"ZoneTuyau3":
-			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+			if Input.is_action_pressed("object_interact") and colleObtenu:
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				tuyau3repare = true
+				$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheTuyau3").modulate = Color("5cf70e")
 				if(has_node("ZoneTuyau3/Gaz3")):
 					$ZoneTuyau3/Gaz3.queue_free()
 				currentArea = null
 		"ZoneBouclier1":
 			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				nb_bouclier += 1
 				if(has_node("Bouclier1")):
 					$Bouclier1.queue_free()
 				currentArea = null
 		"ZoneBouclier2":
 			if Input.is_action_pressed("object_interact"):
-				$Player.get_child(0).get_child(4).set_b_pressed()
+				if($Player.get_child(0).isAndroid):
+					$Player.get_child(0).get_child(5).set_b_pressed()
 				nb_bouclier += 1
 				if(has_node("Bouclier2")):
 					$Bouclier2.queue_free()
@@ -110,6 +119,15 @@ func _process(delta):
 					$Player.get_child(0).speed = 0
 			if Input.is_action_pressed("ui_cancel"): 
 				$PopupBoutonElec.hide()
+				$Player.get_child(0).speed = 100
+		"ZoneFile":
+			if Input.is_action_pressed("object_interact"):
+				if($PopupFilePhone.visible == false):
+					var v = $Player.get_child(0).get_global_position() - $PopupFilePhone.get_rect().size/2
+					$PopupFilePhone.set_global_position(v)
+					change_file_transfert()
+			if Input.is_action_pressed("ui_cancel"): 
+				$PopupFilePhone.hide()
 				$Player.get_child(0).speed = 100
 
 ############################################ Gestion des portes ############################################
@@ -250,12 +268,21 @@ func _on_ZoneBoutonElec_body_entered(body):
 func _on_ZoneBoutonElec_body_exited(body):
 	if(body is Player):
 		currentArea = null
+		
+func _on_ZoneFile_body_entered(body):
+	if(body is Player):
+		currentArea = "ZoneFile"
+
+func _on_ZoneFile_body_exited(body):
+	if(body is Player):
+		currentArea = null
+		
+		
 ############################################ Gestion des signaux ############################################
 
 signal electricite_changed
 func change_electricite_status():
 	emit_signal("electricite_changed")
-
 signal button_elec_pressed
 func change_button_pressed():
 	emit_signal("button_elec_pressed")
@@ -263,6 +290,11 @@ func change_button_pressed():
 signal button_elec_unpressed
 func change_button_unpressed():
 	emit_signal("button_elec_unpressed")
+
+signal file_transfert_changed
+func change_file_transfert():
+	emit_signal("file_transfert_changed")
+
 
 ############################################ Gestion des tâches ############################################
 
@@ -272,7 +304,8 @@ func _on_ButtonEntrerCode_pressed():
 		porteUnlock = true
 		$PopupCodePorte.hide()
 		$Player.get_child(0).speed = 100
-		$Player.get_child(0).get_child(4).set_b_pressed()
+		if($Player.get_child(0).isAndroid):
+			$Player.get_child(0).get_child(5).set_b_pressed()
 		$Door2.tile_set = load("res://Assets/Tileset/door_without_coll.tres")
 		$Door2.visible = false
 	else:
@@ -325,6 +358,7 @@ func creation_fil(text_butt):
 func _on_TextureRectPoignee_pressed():
 	$PopupFils/TextureRectPoignee.rect_position.y = 165
 	if(verif_fil()):
+		$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheElectricite").modulate = Color("5cf70e")
 		change_electricite_status()
 	else:
 		for i in range($PopupFils.get_child_count()):
@@ -359,11 +393,13 @@ func get_string_fil(texture):
 		return "Jaune"
 	if(texture == $PopupFils/RedRight):
 		return "Rouge"
+	
 
 func _on_bouclier_bouclierLock():
 	nb_bouclier_lock += 1
 	if(nb_bouclier_lock >= 2):
 		bouclierRepare = true
+		$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheBouclier").modulate = Color("5cf70e")
 
 func _on_TextureButton_button_down():
 	if(tuyau1repare and tuyau2repare and tuyau3repare and bouclierRepare):
@@ -373,3 +409,24 @@ func _on_TextureButton_button_down():
 func _on_TextureButton_button_up():
 	$PopupBoutonElec/TextureButton.modulate == Color("ffffff")
 	change_button_unpressed()
+
+########### File Transfert	
+func get_anim_ColorPicker(firstColor):
+	if(firstColor == "333ed4"):
+		return "bleu"
+	if(firstColor == "f79cee"):
+		return "rose"
+	if(firstColor == "fd0100"):
+		return "rouge"
+	if(firstColor == "f76915"):
+		return "orange"
+	if(firstColor == "a0d636"):
+		return "vert"
+		
+func popupColorPicker(tab, colorGenere):
+	if(!colorGenere):
+		print(tab[0])
+		$PopupFilePhone/ColorPicker.animation = tab[0]
+		$PopupFilePhone/ColorPicker.play()
+	$Player.get_child(0).speed = 0
+	$PopupFilePhone.popup()

@@ -29,7 +29,7 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 612, 83 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 69
+size = 39
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=7]
@@ -45,7 +45,7 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 612, 83 )
 
 [sub_resource type="DynamicFont" id=10]
-size = 39
+size = 69
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=11]
@@ -157,6 +157,16 @@ tracks/9/keys = {
 "points": PoolRealArray( 50, -0.25, 0, 0.25, 0, 50, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("OptionsContainer:rect_position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 1370, -0.25, 0, 0.25, 0, 297, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -211,6 +221,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OptionsContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 960.0
+margin_top = 7.99998
+margin_right = 1200.0
+margin_bottom = 94.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fullscreen" type="Button" parent="OptionsContainer"]
+margin_right = 240.0
+margin_bottom = 41.0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+text = "Fullscreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retour" type="Button" parent="OptionsContainer"]
+margin_top = 45.0
+margin_right = 240.0
+margin_bottom = 86.0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+text = "Retour"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RejoindreContainer" type="VBoxContainer" parent="."]
 visible = false
 anchor_left = 0.5
@@ -235,10 +286,10 @@ margin_top = 102.0
 margin_right = 504.0
 margin_bottom = 200.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Se connecter"
 
 [node name="MenuContainer" type="VBoxContainer" parent="."]
@@ -258,10 +309,10 @@ __meta__ = {
 margin_right = 290.0
 margin_bottom = 48.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Rejoindre"
 align = 2
 __meta__ = {
@@ -273,10 +324,10 @@ margin_top = 58.0
 margin_right = 290.0
 margin_bottom = 107.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Heberger"
 align = 2
 __meta__ = {
@@ -288,10 +339,10 @@ margin_top = 117.0
 margin_right = 290.0
 margin_bottom = 166.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Options"
 align = 2
 __meta__ = {
@@ -303,10 +354,10 @@ margin_top = 176.0
 margin_right = 290.0
 margin_bottom = 225.0
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Quitter"
 align = 2
 __meta__ = {
@@ -335,7 +386,10 @@ __meta__ = {
 [node name="AnimationMenu" type="AnimationPlayer" parent="."]
 anims/AnimationMenu = SubResource( 13 )
 
+[connection signal="pressed" from="OptionsContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
+[connection signal="pressed" from="OptionsContainer/Retour" to="." method="_on_Retour_pressed"]
 [connection signal="pressed" from="RejoindreContainer/Connexion" to="." method="_on_Connexion_pressed"]
 [connection signal="pressed" from="MenuContainer/Rejoindre" to="." method="_on_Rejoindre_pressed"]
 [connection signal="pressed" from="MenuContainer/Heberger" to="." method="_on_Heberger_pressed"]
+[connection signal="pressed" from="MenuContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="MenuContainer/Quitter" to="." method="_on_Quitter_pressed"]

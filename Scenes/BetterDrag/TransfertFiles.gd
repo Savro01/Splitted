@@ -11,11 +11,35 @@ var code = []
 	
 var filled_folders = []
 
+
+
 # ordre a respecter : 
 # rouge - orange - jaune - vert - rose - bleu
-var order = ["fd0100", "f76915", "eede04", "a0d636", "f79cee", "333ed4"]
+
+
+func resetAll():
+	$msg.hide()
 	
-################################# Logic functions ######################
+	# reset files
+	$bin.setEmpty(true)
+	$bin.setToBin()
+	main_pos = $mainFolder.transform.origin
+	dest_pos = main_pos
+	
+	folders = get_tree().get_nodes_in_group("dest")
+	
+	for f in folders:
+		f.setEmpty(true)
+		
+	$file.show()
+	
+	filled_folders = []
+	
+	
+
+	
+############################
+##### Logic functions ######################
  
 ## si le fichier est dans le dossier -> change le sprite du dossier
 func isOnFolder(file, folder):
@@ -33,7 +57,7 @@ func _ready():
 	## dossier source
 	main_pos = $mainFolder.transform.origin
 	dest_pos = main_pos
-	
+	$file.show()
 	# tableau des dossier destination
 	folders = get_tree().get_nodes_in_group("dest")
 	
@@ -45,20 +69,29 @@ func _ready():
 			folders[f].setColor(Color(colors[f]))
 		
 		
+signal win_transfert
+		
 func _physics_process(delta):
 	if folders.size() <= 1:
 		$mainFolder.setEmpty(true)
 		$file.hide()
 		var correct = true
 		for i in range(0, filled_folders.size()):
-			if filled_folders[i] != order[i]:
+			if filled_folders[i] != get_parent().get_parent().get_parent().order[i]:
 				correct = false
 				
 		if not correct:
 			$msg.show()
+			var t = Timer.new()
+			t.set_wait_time(1)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			resetAll()
 		else:
 			$msg.text = "TRANSFERT SUCCEED"
 			$msg.show()
+			emit_signal("win_transfert")
 	else:
 		# on modifie la position du fichier en fonction des dossiers vides
 		# et de la position de la souris
@@ -105,3 +138,7 @@ func near_folder():
 				if not selectedFolder.is_in_group("bin"):
 					filled_folders.append(selectedFolder.color.to_html(false))
 					folders.erase(selectedFolder) 		# on supprime le dossier de la liste -> non draggable
+
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	pass

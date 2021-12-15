@@ -4,7 +4,7 @@ extends KinematicBody2D
 
 var speed = 100
 var velocity = Vector2.ZERO
-var isAndroid = true#OS.get_name() == "Android"
+var isAndroid = OS.get_name() == "Android"
 
 func _ready():
 	if(!isAndroid):
@@ -99,3 +99,23 @@ func _on_Joystick_use_move_vector(move_vector):
 			$BodyCommandant.set_frame(1)
 			$BodyElectricien.set_frame(1)
 			
+
+signal show_task_list_elec
+signal show_task_list_com
+signal show_params
+
+func _on_Taches_pressed():
+	if($BodyElectricien.visible == true):
+		popupInstructionElec()
+	else:
+		popupInstructionCom()
+
+func popupInstructionElec():
+#	var v = get_global_position() - $PopupInstructionElec.get_rect().size/2
+#	$PopupInstructionElec.set_global_position(v)
+	$CanvasLayer/PopupInstructionElec.popup()
+
+func popupInstructionCom():
+#	var v = get_global_position() - $PopupInstructionCom.get_rect().size/2
+#	$PopupInstructionCom.set_global_position(v)
+	$CanvasLayer/PopupInstructionCom.popup()

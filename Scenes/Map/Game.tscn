@@ -16,6 +16,7 @@ position = Vector2( 3956.85, -847.256 )
 [connection signal="button_elec_pressed" from="Vaisseau" to="." method="_on_Vaisseau_button_elec_pressed"]
 [connection signal="button_elec_unpressed" from="Vaisseau" to="." method="_on_Vaisseau_button_elec_unpressed"]
 [connection signal="electricite_changed" from="Vaisseau" to="." method="_on_Vaisseau_electricite_changed"]
+[connection signal="file_transfert_changed" from="Vaisseau" to="." method="_on_Vaisseau_file_transfert_changed"]
 [connection signal="button_com_pressed" from="Cockpit" to="." method="_on_Cockpit_button_com_pressed"]
 [connection signal="button_com_unpressed" from="Cockpit" to="." method="_on_Cockpit_button_com_unpressed"]
 [connection signal="change_code_porte" from="Cockpit" to="." method="_on_Cockpit_change_code_porte"]
