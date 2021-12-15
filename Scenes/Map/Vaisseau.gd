@@ -57,7 +57,7 @@ func _process(delta):
 				if($Player.get_child(0).isAndroid):
 					$Player.get_child(0).get_child(5).set_b_pressed()
 				tuyau1repare = true
-				$Player.get_child(0).get_child(4).get_child(0).get_child(2).modulate = Color("5cf70e")
+				$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheTuyau1").modulate = Color("5cf70e")
 				if(has_node("ZoneTuyau1/Gaz1")):
 					$ZoneTuyau1/Gaz1.queue_free()
 				currentArea = null
@@ -66,7 +66,7 @@ func _process(delta):
 				if($Player.get_child(0).isAndroid):
 					$Player.get_child(0).get_child(5).set_b_pressed()
 				tuyau2repare = true
-				$Player.get_child(0).get_child(4).get_child(0).get_child(3).modulate = Color("5cf70e")
+				$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheTuyau2").modulate = Color("5cf70e")
 				if(has_node("ZoneTuyau2/Gaz2")):
 					$ZoneTuyau2/Gaz2.queue_free()
 				currentArea = null
@@ -75,7 +75,7 @@ func _process(delta):
 				if($Player.get_child(0).isAndroid):
 					$Player.get_child(0).get_child(5).set_b_pressed()
 				tuyau3repare = true
-				$Player.get_child(0).get_child(4).get_child(0).get_child(4).modulate = Color("5cf70e")
+				$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheTuyau3").modulate = Color("5cf70e")
 				if(has_node("ZoneTuyau3/Gaz3")):
 					$ZoneTuyau3/Gaz3.queue_free()
 				currentArea = null
@@ -358,7 +358,7 @@ func creation_fil(text_butt):
 func _on_TextureRectPoignee_pressed():
 	$PopupFils/TextureRectPoignee.rect_position.y = 165
 	if(verif_fil()):
-		$Player.get_child(0).get_child(4).get_child(0).get_child(1).modulate = Color("5cf70e")
+		$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheElectricite").modulate = Color("5cf70e")
 		change_electricite_status()
 	else:
 		for i in range($PopupFils.get_child_count()):
@@ -399,7 +399,7 @@ func _on_bouclier_bouclierLock():
 	nb_bouclier_lock += 1
 	if(nb_bouclier_lock >= 2):
 		bouclierRepare = true
-		$Player.get_child(0).get_child(4).get_child(0).get_child(5).modulate = Color("5cf70e")
+		$Player.get_child(0).get_node("CanvasLayer/PopupInstructionElec/TacheBouclier").modulate = Color("5cf70e")
 
 func _on_TextureButton_button_down():
 	if(tuyau1repare and tuyau2repare and tuyau3repare and bouclierRepare):
@@ -425,6 +425,7 @@ func get_anim_ColorPicker(firstColor):
 		
 func popupColorPicker(tab, colorGenere):
 	if(!colorGenere):
+		print(tab[0])
 		$PopupFilePhone/ColorPicker.animation = tab[0]
 		$PopupFilePhone/ColorPicker.play()
 	$Player.get_child(0).speed = 0
