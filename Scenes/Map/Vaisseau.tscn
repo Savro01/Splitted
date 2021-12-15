@@ -130,24 +130,24 @@ animations = [ {
 "name": "orange",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 31 ), ExtResource( 32 ), ExtResource( 28 ), ExtResource( 34 ), ExtResource( 42 ), ExtResource( 23 ), ExtResource( 35 ) ],
-"loop": true,
-"name": "bleu",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 27 ), ExtResource( 44 ), ExtResource( 48 ) ],
 "loop": true,
 "name": "rouge",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 26 ), ExtResource( 41 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 38 ), ExtResource( 45 ) ],
-"loop": true,
-"name": "rose",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 30 ), ExtResource( 16 ), ExtResource( 33 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "vert",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 32 ), ExtResource( 28 ), ExtResource( 34 ), ExtResource( 42 ), ExtResource( 23 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "bleu",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 26 ), ExtResource( 41 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 38 ), ExtResource( 45 ) ],
+"loop": true,
+"name": "rose",
 "speed": 5.0
 } ]
 
@@ -575,6 +575,7 @@ __meta__ = {
 }
 
 [node name="PopupFilePhone" type="Popup" parent="."]
+visible = true
 margin_right = 677.0
 margin_bottom = 408.0
 popup_exclusive = true

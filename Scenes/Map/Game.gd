@@ -91,9 +91,10 @@ func _on_Vaisseau_file_transfert_changed():
 		$Vaisseau.popupColorPicker(tab, colorGenere)
 
 remote func set_tab_colorPick(tab):
-	if(!codeGenere):
+	if(!colorGenere):
 		colorPick = tab
 		rpc("setOrder")
+		setOrder()
 		colorGenere = true
 
 func _on_Cockpit_button_com_pressed():
@@ -135,9 +136,9 @@ remote func change_scene_final():
 
 remote func setOrder():
 	var tab = colorPick
-	print(order)
 	
 	var value = tab[0]
+	print(value)
 	var newOrder = order
 	
 	if(value == "bleu"):
@@ -151,5 +152,5 @@ remote func setOrder():
 	if(value == "vert"):
 		newOrder = ["a0d636", "f76915", "f79cee", "333ed4", "fd0100", "eede04"]
 	
-	print(newOrder)
 	order = newOrder
+	print(newOrder)
