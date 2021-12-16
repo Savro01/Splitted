@@ -38,6 +38,8 @@ func create_play():
 		else:
 			player.get_node("BodyCommandant").visible = false
 			get_node("Vaisseau/Player").add_child(player)
+		$AudioStreamPlayer.play(2)
+
 
 func _on_Cockpit_change_code_porte():
 	rng.randomize()
