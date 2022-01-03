@@ -130,11 +130,6 @@ animations = [ {
 "name": "orange",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 27 ), ExtResource( 44 ), ExtResource( 48 ) ],
-"loop": true,
-"name": "rouge",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 30 ), ExtResource( 16 ), ExtResource( 33 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "vert",
@@ -148,6 +143,11 @@ animations = [ {
 "frames": [ ExtResource( 24 ), ExtResource( 26 ), ExtResource( 41 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 38 ), ExtResource( 45 ) ],
 "loop": true,
 "name": "rose",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 27 ), ExtResource( 44 ), ExtResource( 48 ) ],
+"loop": true,
+"name": "rouge",
 "speed": 5.0
 } ]
 
@@ -485,73 +485,73 @@ __meta__ = {
 }
 
 [node name="BlueLeft" type="TextureButton" parent="PopupFils"]
-margin_left = 34.0
-margin_top = 68.0
-margin_right = 64.0
-margin_bottom = 90.0
+margin_left = 24.0
+margin_top = 56.0
+margin_right = 81.0
+margin_bottom = 100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BlueRight" type="TextureButton" parent="PopupFils"]
-margin_left = 369.0
-margin_top = 69.0
-margin_right = 396.0
-margin_bottom = 92.0
+margin_left = 357.0
+margin_top = 57.0
+margin_right = 409.0
+margin_bottom = 107.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PinkLeft" type="TextureButton" parent="PopupFils"]
-margin_left = 36.0
-margin_top = 149.0
-margin_right = 63.0
-margin_bottom = 169.0
+margin_left = 22.0
+margin_top = 136.0
+margin_right = 80.0
+margin_bottom = 179.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PinkRight" type="TextureButton" parent="PopupFils"]
-margin_left = 364.0
-margin_top = 146.0
-margin_right = 396.0
-margin_bottom = 169.0
+margin_left = 356.0
+margin_top = 133.0
+margin_right = 413.0
+margin_bottom = 179.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="YellowLeft" type="TextureButton" parent="PopupFils"]
-margin_left = 36.0
-margin_top = 228.0
-margin_right = 63.0
-margin_bottom = 248.0
+margin_left = 25.0
+margin_top = 217.0
+margin_right = 80.0
+margin_bottom = 264.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="YellowRight" type="TextureButton" parent="PopupFils"]
-margin_left = 365.0
-margin_top = 232.0
-margin_right = 395.0
-margin_bottom = 252.0
+margin_left = 349.0
+margin_top = 219.0
+margin_right = 405.0
+margin_bottom = 263.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RedLeft" type="TextureButton" parent="PopupFils"]
-margin_left = 33.0
-margin_top = 305.0
-margin_right = 63.0
-margin_bottom = 327.0
+margin_left = 24.0
+margin_top = 292.0
+margin_right = 76.0
+margin_bottom = 339.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RedRight" type="TextureButton" parent="PopupFils"]
-margin_left = 365.0
-margin_top = 308.0
-margin_right = 397.0
-margin_bottom = 329.0
+margin_left = 354.0
+margin_top = 292.0
+margin_right = 413.0
+margin_bottom = 342.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -575,7 +575,6 @@ __meta__ = {
 }
 
 [node name="PopupFilePhone" type="Popup" parent="."]
-visible = true
 margin_right = 677.0
 margin_bottom = 408.0
 popup_exclusive = true
@@ -602,7 +601,7 @@ position = Vector2( 331.338, 220.049 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 22 )
 animation = "bleu"
-frame = 1
+frame = 5
 playing = true
 
 [node name="PopupBoutonElec" type="Popup" parent="."]
